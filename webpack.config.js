@@ -7,6 +7,8 @@ module.exports = (env) => {
   const mode = env.mode ?? "development";
   const port = env.port ?? "3000";
 
+  const isProd = mode === "production";
+
   return {
     mode,
     entry: path.resolve(__dirname, "src", "index.tsx"),
@@ -26,38 +28,44 @@ module.exports = (env) => {
     },
     module: {
       rules: [
+        // {
+        //   test: /\.css$/,
+        //   use: [
+        //     "style-loader",
+        //     {
+        //       loader: "css-loader",
+        //       options: {
+        //         modules: {
+        //           auto: (resPath) => resPath.includes(".module."),
+        //           localIdentName: "[path][name]__[local]",
+        //         },
+        //       },
+        //     },
+        //     ,
+        //     "sass-loader",
+        //   ],
+        // },
         {
           test: /\.css$/,
-          use: [
-            "style-loader",
-            {
-              loader: "css-loader",
-              options: {
-                modules: {
-                  auto: (resPath) => resPath.includes(".module."),
-                  localIdentName: "[path][name]__[local]",
-                },
-              },
-            },
-            ,
-            "sass-loader",
-          ],
+          use: ["style-loader", "css-loader"],
+          include: __dirname,
         },
         {
-          test: /\.scss$/, // s[ac]ss
+          test: /\.s[ac]ss$/, // scss
           use: [
-            "style-loader",
+            isProd ? MiniCSSExtractPlugin.loader : "style-loader",
             {
               loader: "css-loader",
               options: {
                 modules: {
                   auto: (resPath) => resPath.includes(".module."),
-                  localIdentName: "[path][name]__[local]-[hash:base64:5]", // [name]_[local]-[hash:base64:5]
+                  localIdentName: "[name]_[local]-[hash:base64:5]",
                 },
               },
             },
             "sass-loader",
           ],
+          include: path.resolve(__dirname, "../"),
         },
         {
           test: /\.(js|jsx|ts)$/,
