@@ -4,7 +4,7 @@ export const myOperation = [
     category: 'Покупки',
     name: 'shop',
     shortDescription: 'Продукты на праздник',
-    description: 'Колбаса, рыба, мясо,фрукты',
+    description: 'Колбаса, рыба, мясо,фрукты, колбаса',
     date: new Date(),
     onEditClick: () => '',
     income: false,
