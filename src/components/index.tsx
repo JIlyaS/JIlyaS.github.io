@@ -1,4 +1,2 @@
-import { Header } from "./Header";
-import { Modal } from "./Modal";
-
-export { Header, Modal };
+export { Header } from './Header';
+export { Modal } from './Modal';

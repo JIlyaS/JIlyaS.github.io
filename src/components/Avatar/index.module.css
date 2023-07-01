@@ -1,0 +1,11 @@
+.avatar {
+    border-radius: 50%;
+}
+
+.avatarActive {
+    border: 1px solid #93C5FD;
+}
+
+.avatarEmpty {
+    background: #dee2e6;
+}
