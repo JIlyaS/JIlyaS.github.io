@@ -1,0 +1,41 @@
+export const myOperation = [
+  {
+    summ: 2050,
+    category: 'Покупки',
+    name: 'shop',
+    shortDescription: 'Продукты на праздник',
+    description: 'Колбаса, рыба, мясо,фрукты',
+    date: new Date(),
+    onEditClick: () => '',
+    income: false,
+  },
+  {
+    summ: 1100,
+    category: 'Спорт',
+    name: 'sport',
+    shortDescription: 'Абонемент в зал',
+    description: 'Оплатил занятия до конца года',
+    income: false,
+    onEditClick: () => '',
+  },
+  {
+    summ: 135000,
+    category: 'Зарплата',
+    name: 'job',
+    shortDescription: 'Премия',
+    description: 'Выдали полугодовую премию',
+    income: true,
+    date: new Date(),
+    onEditClick: () => '',
+  },
+];
+export const myOperation2 = {
+  summ: 135000,
+  category: 'Зарплата',
+  name: 'job',
+  shortDescription: 'Премия',
+  description: 'Выдали полугодовую премию',
+  date: new Date(),
+  onEditClick: () => '',
+  income: true,
+};
