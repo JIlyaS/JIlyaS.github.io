@@ -18,7 +18,7 @@ export const Avatar: FC<IAvatarProps> = ({ size = 'medium', src }) => {
       src={src}
       alt="avatar"
       className={cn(styles.avatar, styles['avatar-active'])}
-      style={{ width: mapSizeAvatar[size], height: mapSizeAvatar[size], borderRadius: '50%' }}
+      style={{ width: mapSizeAvatar[size], height: mapSizeAvatar[size] }}
     />
   ) : (
     <div
