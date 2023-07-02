@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import styles from './index.module.css';
+import styles from './index.module.scss';
 import { Avatar } from '../Avatar';
 import Logo from './logo.svg';
 export const Header: FC = () => {

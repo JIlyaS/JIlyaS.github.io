@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
-import styles from './index.module.css';
+import styles from './index.module.scss';
 
 type AvatarSize = 'small' | 'medium' | 'large';
 const mapSizeAvatar: Record<AvatarSize, string> = {
@@ -17,12 +17,12 @@ export const Avatar: FC<IAvatarProps> = ({ size = 'medium', src }) => {
     <img
       src={src}
       alt="avatar"
-      className={cn(styles.avatar, styles.avatarActive)}
+      className={cn(styles.avatar, styles['avatar-active'])}
       style={{ width: mapSizeAvatar[size], height: mapSizeAvatar[size], borderRadius: '50%' }}
     />
   ) : (
     <div
-      className={cn(styles.avatar, styles.avatarEmpty)}
+      className={cn(styles.avatar, styles['avatar-empty'])}
       style={{ width: mapSizeAvatar[size], height: mapSizeAvatar[size] }}
     />
   );
