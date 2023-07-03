@@ -5,8 +5,8 @@ import Logo from './logo.svg';
 export const Header: FC = () => {
   return (
     <div className={styles.root}>
-      <Logo className={styles.logo} />
-      <Avatar size="large" />
+      <Logo />
+      <Avatar />
     </div>
   );
 };

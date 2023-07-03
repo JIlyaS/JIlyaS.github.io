@@ -21,22 +21,3 @@ export const AvatarWithPhoto: Story = {
     src: 'https://sefil.ru/uploads/actors/2022-09/beb271c6e2c899d68a-kianu-rivz-2.jpg',
   },
 };
-
-export const AvatarSmall: Story = {
-  args: {
-    src: 'https://sefil.ru/uploads/actors/2022-09/beb271c6e2c899d68a-kianu-rivz-2.jpg',
-    size: 'small',
-  },
-};
-export const AvatarMedium: Story = {
-  args: {
-    src: 'https://sefil.ru/uploads/actors/2022-09/beb271c6e2c899d68a-kianu-rivz-2.jpg',
-    size: 'medium',
-  },
-};
-export const AvatarLarge: Story = {
-  args: {
-    src: 'https://sefil.ru/uploads/actors/2022-09/beb271c6e2c899d68a-kianu-rivz-2.jpg',
-    size: 'large',
-  },
-};
