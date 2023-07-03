@@ -33,10 +33,10 @@ jobs:
 
       # Запускаем тесты и линтер
       - name: Run linting Typescript
-        run: npm run eslint:ts:fix && npm run eslint:ts
+        run: npm run eslint:ts
 
       - name: Run linting SCSS
-        run: npm run stylelint:fix && npm run stylelint:check
+        run: npm run stylelint:check
 
       # - name: Run unit tests
       #   run: npm run test:unit
