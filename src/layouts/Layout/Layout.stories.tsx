@@ -1,5 +1,5 @@
 import { Layout } from './Layout';
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
 type Story = StoryObj<typeof Layout>;
 
@@ -11,7 +11,7 @@ const meta = {
       description: 'Слой с сайдбаром',
       defaultValue: 'null',
     },
-  }
+  },
 } satisfies Meta<typeof Layout>;
 
 export default meta;
@@ -19,14 +19,14 @@ export default meta;
 export const Default = {
   args: {
     children: 'Контентная часть',
-  }
+  },
 } satisfies Story;
 
 export const LayoutWithSidebar = {
   args: {
     children: 'Контентная часть',
     sidebar: <div>123</div>,
-  }
+  },
 };
 
 // import { Layout } from './Layout';
@@ -59,5 +59,3 @@ export const LayoutWithSidebar = {
 //   children: 'Контентная часть',
 //   sidebar: <div>123</div>,
 // };
-
-

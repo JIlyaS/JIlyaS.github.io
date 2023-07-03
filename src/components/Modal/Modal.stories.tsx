@@ -1,5 +1,5 @@
 import { Modal } from './Modal';
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 type Story = StoryObj<typeof Modal>;
@@ -10,13 +10,13 @@ const meta = {
   argTypes: {
     title: {
       type: 'string',
-      description: 'Заголовок модального окна'
+      description: 'Заголовок модального окна',
     },
     onClose: {
       type: 'function',
       description: 'Событие закрытия модального окна',
     },
-  }
+  },
 } satisfies Meta<typeof Modal>;
 
 export default meta;
@@ -26,7 +26,7 @@ export const Default = {
     title: 'Модальное окно',
     children: 'Контентная часть',
     onClose: action('onClose'),
-  }
+  },
 } satisfies Story;
 
 // export default {
