@@ -1,0 +1,73 @@
+@import '../../app/styles/vars.module.scss';
+
+.cardBrief {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 784px;
+  padding: 2px 10px;
+  border-bottom: 0.5px solid $border-color;
+  border-top: 0.5px solid $border-color;
+  color: $text-gray-color;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  & > div {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px;
+  }
+  &.cardBrief:hover {
+    background-color: $bg-gray-color;
+  }
+  .icon {
+    display: flex;
+    font-size: 18px;
+  }
+
+  .arrowDown {
+    transform: rotate(180deg);
+  }
+  .red {
+    color: $red-color;
+  }
+  .green {
+    color: $green-color;
+  }
+  &.cardBrief:hover {
+    background-color: $bg-gray-color;
+  }
+  .category {
+    display: flex;
+    justify-content: flex-start;
+    font-weight: 700;
+    color: $text-gray-color;
+  }
+
+  .summ {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    &.red {
+      color: $red-color;
+    }
+    &.green {
+      color: $green-color;
+    }
+  }
+  .shortDescription {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+  .description {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
