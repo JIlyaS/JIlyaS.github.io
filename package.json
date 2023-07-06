@@ -12,7 +12,9 @@
     "stylelint:check": "stylelint \"**/*.{css,scss,sass}\"",
     "stylelint:fix": "stylelint \"**/*.{css,scss,sass}\" --fix",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "ts:check": "tsc --noEmit",
+    "build-storybook": "storybook build",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -82,14 +84,10 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "**/*.{css,scss,sass}": [
       "stylelint --fix"
-    ]
+    ],
+    "**/*.{ts,tsx}": "npm run eslint:ts:fix --"
   }
 }
