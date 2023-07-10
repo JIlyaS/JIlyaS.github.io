@@ -1,7 +1,7 @@
 import { Header } from './Header';
 import { Modal } from './Modal';
-import { CardBrief } from './CardBrief';
+import { Card } from './Card';
 import { CardFull } from './CardFull';
 import CategoryIcon from './Icons/CategoryIcon';
 
-export { Header, Modal, CardBrief, CardFull, CategoryIcon };
+export { Header, Modal, Card, CardFull, CategoryIcon };

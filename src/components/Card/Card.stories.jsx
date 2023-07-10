@@ -1,10 +1,10 @@
-import { CardBrief } from './CardBrief';
+import { Card } from './Card';
 import CategoryIcon from '../Icons/CategoryIcon';
-import './CardBrief.module.scss';
+import './Card.module.scss';
 
 export default {
-  title: 'CardBrief',
-  component: CardBrief,
+  title: 'components/Card',
+  component: Card,
   argTypes: {
     income: {
       type: 'boolean',
@@ -35,14 +35,13 @@ export default {
   },
 };
 
-export const CardBriefStory = (arg) => <CardBrief {...arg} icon={<CategoryIcon {...arg} />} />;
+export const CardStory = (arg) => <Card {...arg} icon={<CategoryIcon {...arg} />} />;
 
-CardBriefStory.args = {
+CardStory.args = {
   summ: '100',
   category: 'Покупки',
   shortDescription: 'Продукты',
   description: 'Фрукты, рыба, хле',
   income: true,
   date: new Date(),
-  // iconCategory: 'shop',
 };

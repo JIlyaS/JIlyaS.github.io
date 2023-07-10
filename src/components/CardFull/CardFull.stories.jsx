@@ -3,7 +3,7 @@ import CategoryIcon from '../Icons/CategoryIcon';
 import './CardFull.module.scss';
 
 export default {
-  title: 'CardFull',
+  title: 'components/CardFull',
   component: CardFull,
   argTypes: {
     income: {
@@ -39,4 +39,5 @@ CardFullStory.args = {
   shortDescription: 'Продукты',
   description: 'Фрукты, рыба, хле',
   income: true,
+  date: new Date(),
 };

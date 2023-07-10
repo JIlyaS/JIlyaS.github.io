@@ -4,7 +4,7 @@ import { Layout } from '../layouts/Layout';
 
 import './styles/index.scss';
 import { Modal } from '../components';
-import { CardBrief } from '../components';
+import { Card } from '../components';
 import { CardFull } from '../components';
 import { CategoryIcon } from '../components/Icons';
 
@@ -14,12 +14,12 @@ import { myOperation2 } from './operation';
 export const App: FC = () => {
   return (
     <Layout sidebar={<div>111</div>}>
-      <Modal title="Модальное окно" onClose={() => console.log('123')}>
+      {/* <Modal title="Модальное окно" onClose={() => console.log('123')}>
         123
-      </Modal>
+      </Modal> */}
 
       {myOperation.map((el) => (
-        <CardBrief
+        <Card
           summ={el.summ}
           category={el.category}
           description={el.description}

@@ -15,35 +15,40 @@ export const CardFull: React.FC<FullCardProps> = ({
 }) => {
   return (
     <div className={styles.cardFull}>
-      <div className={styles.cardTop}>
-        <div className={classNames(styles.icon, income ? styles.green : styles.red)}>
-          <i>{icon}</i>
+      <div className={styles.cardFull__cardTop}>
+        <div
+          className={classNames(
+            styles.cardFull__icon,
+            income ? styles.cardFull_green : styles.cardFull_red,
+          )}
+        >
+          {icon}
         </div>
-        <button className={styles.editButton} onClick={onEditClick}>
-          <i>
-            <AiOutlineEdit />
-          </i>
+        <button className={styles.cardFull__editButton} onClick={onEditClick}>
+          <AiOutlineEdit />
         </button>
       </div>
-      <div className={styles.cardMiddle}>
-        <div className={styles.category}>{category}</div>
-        <div className={classNames(styles.summ, income ? styles.green : styles.red)}>
-          {' '}
-          <i
+      <div className={styles.cardFull__cardMiddle}>
+        <div className={styles.cardFull__category}>{category}</div>
+        <div
+          className={classNames(
+            styles.cardFull__summ,
+            income ? styles.cardFull_green : styles.cardFull_red,
+          )}
+        >
+          <AiOutlineArrowUp
             className={classNames(
-              styles.icon,
-              income ? styles.green : (styles.red, styles.arrowDown),
+              styles.cardFull__icon,
+              income ? styles.cardFull_green : (styles.cardFull_red, styles.cardFull_arrowDown),
             )}
-          >
-            <AiOutlineArrowUp />
-          </i>
+          />
           {summ}
         </div>
       </div>
-      <div className={styles.cardBottom}>
-        <div className={styles.shortDescription}>{shortDescription}</div>
-        <div className={styles.description}>{description}</div>
-        <div className={styles.date}>{date && date.toLocaleDateString()}</div>
+      <div className={styles.cardFull__cardBottom}>
+        <div className={styles.cardFull__shortDescription}>{shortDescription}</div>
+        <div className={styles.cardFull__description}>{description}</div>
+        <div className={styles.cardFull__date}>{date && date.toLocaleDateString()}</div>
       </div>
     </div>
   );

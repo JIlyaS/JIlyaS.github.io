@@ -1,15 +1,15 @@
-export interface CardBriefProps {
-  summ: number; // Сумма операции
-  category: string; // Название категории
+export interface CardProps {
+  summ: number;
+  category: string;
   name: string;
-  description: string; // Описание операции
-  icon: React.ReactNode; // Иконка операции
+  description: string;
+  icon: React.ReactNode;
   income: boolean;
   date?: Date;
   shortDescription?: string;
 }
 
-export interface FullCardProps extends CardBriefProps {
-  date: Date; // Дата операции
-  onEditClick: () => void; // Обработчик нажатия кнопки редактирования
+export interface FullCardProps extends CardProps {
+  date: Date;
+  onEditClick: () => void;
 }

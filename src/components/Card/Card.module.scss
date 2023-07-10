@@ -1,13 +1,13 @@
 @import '../../app/styles/vars.module.scss';
 
-.cardBrief {
+.card {
   display: flex;
   align-items: center;
   margin: 0 auto;
-  max-width: 784px;
-  padding: 2px 10px;
-  border-bottom: 0.5px solid $border-color;
-  border-top: 0.5px solid $border-color;
+  width: 100%;
+  padding: 2px 18px;
+  border-bottom: 1px solid $border-color;
+  border-top: 1px solid $border-color;
   color: $text-gray-color;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
@@ -19,51 +19,47 @@
     align-items: center;
     padding: 8px;
   }
-  &.cardBrief:hover {
+  &.card:hover {
     background-color: $bg-gray-color;
   }
-  .icon {
+  .card__icon {
     display: flex;
     font-size: 18px;
   }
 
-  .arrowDown {
+  .card_arrowDown {
     transform: rotate(180deg);
   }
-  .red {
+  .card_red {
     color: $red-color;
   }
-  .green {
+  .card_green {
     color: $green-color;
   }
-  &.cardBrief:hover {
+  &.card:hover {
     background-color: $bg-gray-color;
   }
-  .category {
+  .card__category {
     display: flex;
     justify-content: flex-start;
     font-weight: 700;
     color: $text-gray-color;
-  }
-
-  .summ {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-
-    &.red {
-      color: $red-color;
-    }
-    &.green {
-      color: $green-color;
+    & .card__icon {
+      padding-right: 4px;
     }
   }
-  .shortDescription {
+
+  .card__summ {
     display: flex;
     justify-content: left;
     align-items: center;
   }
-  .description {
+  .card__shortDescription {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+  .card__description {
     display: flex;
     justify-content: space-between;
     overflow: hidden;

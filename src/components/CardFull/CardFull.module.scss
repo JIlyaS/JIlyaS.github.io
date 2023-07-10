@@ -13,7 +13,7 @@
   overflow: hidden;
   color: $text-gray-color;
 
-  .cardTop {
+  .cardFull__cardTop {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,26 +21,26 @@
     padding-bottom: 80px;
     -bottom: 80px;
   }
-  .cardMiddle {
+  .cardFull__cardMiddle {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 20px;
   }
-  .icon {
+  .cardFull__icon {
     display: flex;
   }
 
-  .arrowDown {
+  .cardFull_arrowDown {
     transform: rotate(180deg);
   }
-  .red {
+  .cardFull_red {
     color: $red-color;
   }
-  .green {
+  .cardFull_green {
     color: $green-color;
   }
-  .category {
+  .cardFull__category {
     display: flex;
     justify-content: flex-start;
     font-size: 24px;
@@ -48,26 +48,19 @@
     color: $text-gray-color;
   }
 
-  .summ {
+  .cardFull__summ {
     display: flex;
     justify-content: left;
     align-items: center;
     font-size: 24px;
-
-    &.red {
-      color: $red-color;
-    }
-    &.green {
-      color: $green-color;
-    }
   }
-  .shortDescription {
+  .cardFull__shortDescription {
     font-size: 20px;
     padding-bottom: 10px;
     overflow: hidden;
     word-break: break-all;
   }
-  .description {
+  .cardFull__description {
     display: flex;
     justify-content: space-between;
     padding-bottom: 10px;
@@ -76,13 +69,13 @@
     word-break: break-all;
   }
 
-  .date {
+  .cardFull__date {
     font-size: 12px;
     color: #999;
     margin-bottom: 16px;
   }
 
-  .editButton {
+  .cardFull__editButton {
     color: $text-gray-color;
     border: none;
     background: none;
