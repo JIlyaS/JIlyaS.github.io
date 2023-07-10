@@ -1,5 +1,6 @@
 .layout {
   background-color: #e2e8f0;
+
   &_wrap {
     display: flex;
   }
@@ -7,14 +8,12 @@
   &_sidebar {
     width: 100%;
     max-width: 264px;
-
-    background-color: #ffffff;
+    background-color: #fff;
   }
 
   &_content {
     width: 100vw;
     height: 100vh;
-
     margin-top: 70px;
   }
 }

@@ -1,0 +1,70 @@
+name: Test, Lint, Build and Deploy on Github Pages
+
+# Настраиваем рабочий процесс для запуска при каждой отправке изменений в ветвь с именем main
+on:
+  push:
+    branches: [main]
+
+# Задает разрешения для действия в задании
+permissions:
+  contents: write
+  packages: write
+
+# Запуск в последней доступной версии Ununtu
+jobs:
+  build-and-deploy: # pipeline:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # Устанавливаем зависимости
+      - name: Install dependencies
+        run: npm install
+
+      # Запускаем тесты и линтер
+      - name: Run linting Typescript
+        run: npm run eslint:ts:fix && npm run eslint:ts
+
+      - name: Run linting SCSS
+        run: npm run stylelint:fix && npm run stylelint:check
+
+      # - name: Run unit tests
+      #   run: npm run test:unit
+
+      # Собираем приложение
+      - name: Build Application
+        run: npm run build:prod
+
+      # Публикуем приложение на GitHub Pages
+      - name: Deploy to Github Pages
+        uses: JamesIves/github-pages-deploy-action@4.2.1
+        with:
+          branch: gh-pages
+          folder: dist
+
+      # Собираем Storybook
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      # Публикуем Storybook на Github Pages
+      - name: Deploy Storybook на Github Pages
+        uses: JamesIves/github-pages-deploy-action@4.2.1
+        with:
+          branch: gh-pages
+          folder: storybook-static
+          commit-message: 'Automatic publish Storybook'
+
+      # Останавливаем выполнение строго при неудачных тестах
+      - name: Fail on failed tests
+        run: |
+          if [${{ job.status }} == 'failure' ]; then exit 1; fi;

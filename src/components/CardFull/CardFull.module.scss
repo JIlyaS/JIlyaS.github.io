@@ -1,39 +1,51 @@
-@import '../../app/styles/vars.module.scss';
+/* stylelint-disable */
+@import '../../app/styles/vars.module';
 
 .cardFull {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   max-width: 378px;
   max-height: 572px;
   margin: 0 auto;
   padding: 20px 30px;
-  border-radius: 4px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   overflow: hidden;
   color: $text-gray-color;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
 
   .cardFull__cardTop {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    font-size: 40px;
+    justify-content: space-between;
     padding-bottom: 80px;
+    font-size: 40px;
     -bottom: 80px;
   }
+<<<<<<< HEAD
   .cardFull__cardMiddle {
+=======
+
+  .cardMiddle {
+>>>>>>> 103fad7add5cc8b14200eaa007ed5b6b3d20c98c
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding-bottom: 20px;
   }
+<<<<<<< HEAD
   .cardFull__icon {
+=======
+
+  .icon {
+>>>>>>> 103fad7add5cc8b14200eaa007ed5b6b3d20c98c
     display: flex;
   }
 
   .cardFull_arrowDown {
     transform: rotate(180deg);
   }
+<<<<<<< HEAD
   .cardFull_red {
     color: $red-color;
   }
@@ -41,48 +53,88 @@
     color: $green-color;
   }
   .cardFull__category {
+=======
+
+  .red {
+    color: $red-color;
+  }
+
+  .green {
+    color: $green-color;
+  }
+
+  .category {
+>>>>>>> 103fad7add5cc8b14200eaa007ed5b6b3d20c98c
     display: flex;
     justify-content: flex-start;
-    font-size: 24px;
-    font-weight: 700;
     color: $text-gray-color;
+    font-weight: 700;
+    font-size: 24px;
   }
 
   .cardFull__summ {
     display: flex;
-    justify-content: left;
     align-items: center;
+    justify-content: left;
     font-size: 24px;
+<<<<<<< HEAD
   }
   .cardFull__shortDescription {
     font-size: 20px;
+=======
+
+    &.red {
+      color: $red-color;
+    }
+
+    &.green {
+      color: $green-color;
+    }
+  }
+
+  .shortDescription {
+>>>>>>> 103fad7add5cc8b14200eaa007ed5b6b3d20c98c
     padding-bottom: 10px;
     overflow: hidden;
+    font-size: 20px;
     word-break: break-all;
   }
+<<<<<<< HEAD
   .cardFull__description {
+=======
+
+  .description {
+>>>>>>> 103fad7add5cc8b14200eaa007ed5b6b3d20c98c
     display: flex;
     justify-content: space-between;
     padding-bottom: 10px;
-    font-size: 16px;
     overflow: hidden;
+    font-size: 16px;
     word-break: break-all;
   }
 
+<<<<<<< HEAD
   .cardFull__date {
     font-size: 12px;
     color: #999;
+=======
+  .date {
+>>>>>>> 103fad7add5cc8b14200eaa007ed5b6b3d20c98c
     margin-bottom: 16px;
+    color: #999;
+    font-size: 12px;
   }
 
   .cardFull__editButton {
     color: $text-gray-color;
-    border: none;
-    background: none;
-    cursor: pointer;
     font-size: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+
     &:hover {
       opacity: 0.8;
     }
   }
 }
+/* stylelint-enable */
