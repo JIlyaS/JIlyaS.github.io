@@ -13,10 +13,10 @@ import { myOperation2 } from './operation';
 
 export const App: FC = () => {
   return (
-    <Layout sidebar={<div>111</div>}>
-      <Modal title="Модальное окно" onClose={() => console.log('123')}>
-        123
-      </Modal>
+    <Layout sidebar={<div></div>}>
+      {/*<Modal title="Модальное окно" onClose={() => console.log('123')}>*/}
+      {/*  123*/}
+      {/*</Modal>*/}
 
       {myOperation.map((el) => (
         <CardBrief

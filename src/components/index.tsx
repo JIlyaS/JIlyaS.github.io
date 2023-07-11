@@ -3,5 +3,14 @@ import { Modal } from './Modal';
 import { CardBrief } from './CardBrief';
 import { CardFull } from './CardFull';
 import CategoryIcon from './Icons/CategoryIcon';
+import { ToggleTheme } from './ToggleTheme';
 
-export { Header, Modal, CardBrief, CardFull, CategoryIcon };
+// eslint-disable-next-line prettier/prettier
+export {
+  Header,
+  Modal,
+  CardBrief,
+  CardFull,
+  CategoryIcon,
+  ToggleTheme,
+};
