@@ -1,20 +1,22 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import { Layout } from '../layouts/Layout';
 
-import './styles/index.scss';
-import { Modal } from '../components';
-import { CardBrief } from '../components';
-import { CardFull } from '../components';
-import { CategoryIcon } from '../components/Icons';
+import { Modal, CardBrief, CardFull, CategoryIcon, Button } from '../components';
 
-import { myOperation } from './operation';
-import { myOperation2 } from './operation';
+import { myOperation, myOperation2 } from './operation';
+
+import './styles/index.scss';
 
 export const App: FC = () => {
+  const [visible, setVisible] = useState(false);
+
   return (
     <Layout sidebar={<div>111</div>}>
-      <Modal title="Модальное окно" onClose={() => console.log('123')}>
+      <Button dimention="small" onClick={() => setVisible(true)}>
+        Модальное окно
+      </Button>
+      <Modal visible={visible} title="Модальное окно" onClose={() => setVisible(false)}>
         123
       </Modal>
 

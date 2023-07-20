@@ -12,6 +12,10 @@ const meta = {
       type: 'string',
       description: 'Заголовок модального окна',
     },
+    visible: {
+      type: 'boolean',
+      description: 'Видимость модального окна',
+    },
     onClose: {
       type: 'function',
       description: 'Событие закрытия модального окна',
@@ -23,6 +27,7 @@ export default meta;
 
 export const Default = {
   args: {
+    visible: true,
     title: 'Модальное окно',
     children: 'Контентная часть',
     onClose: action('onClose'),
