@@ -21,7 +21,7 @@ const meta = {
       description: 'Тип кнопки',
     },
     loading: {
-      type: 'string',
+      type: 'boolean',
       description: 'Состояние загрузки кнопки',
     },
     iconLeft: {
