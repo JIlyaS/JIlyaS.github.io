@@ -31,7 +31,7 @@ export const App: FC = () => {
   return (
     <Suspense fallback="">
       <LanguageProvider>
-        <Layout sidebar={<div>111</div>}>
+        <Layout sidebar={<div></div>}>
           <Button dimension="small" onClick={() => setVisible(true)}>
             Модальное окно
           </Button>

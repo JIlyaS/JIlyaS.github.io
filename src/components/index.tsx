@@ -6,5 +6,16 @@ import CategoryIcon from './Icons/CategoryIcon';
 import { Button } from './Button';
 import { InputField } from './InputField';
 import { Switch } from './Switch';
+import { ToggleTheme } from './ToggleTheme';
 
-export { Header, Modal, CardBrief, CardFull, CategoryIcon, Button, InputField, Switch };
+export {
+  Header,
+  Modal,
+  CardBrief,
+  CardFull,
+  CategoryIcon,
+  Button,
+  InputField,
+  Switch,
+  ToggleTheme,
+};

@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Header } from './Header';
+import { ToggleTheme } from './ToggleTheme';
 
 const meta = {
-  title: 'components/Header',
-  component: Header,
+  title: 'components/ToggleTheme',
+  component: ToggleTheme,
   tags: ['autodocs'],
   argTypes: {},
-} satisfies Meta<typeof Header>;
+} satisfies Meta<typeof ToggleTheme>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
