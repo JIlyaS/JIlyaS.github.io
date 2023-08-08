@@ -1,5 +1,7 @@
+@import '../../app/styles/vars.module';
+
 .layout {
-  background-color: #e2e8f0;
+  background-color: var(--blue-gray-200);
 
   &_wrap {
     display: flex;
@@ -8,7 +10,7 @@
   &_sidebar {
     width: 100%;
     max-width: 264px;
-    background-color: #fff;
+    background-color: $bg-color;
   }
 
   &_content {

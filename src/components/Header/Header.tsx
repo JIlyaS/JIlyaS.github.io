@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Avatar } from '../Avatar';
 import { LanguageContext } from '../../providers/i18n/LanguageProvider';
 import { Switch } from '../Switch';
+import { ToggleTheme } from '../ToggleTheme';
 
 import Logo from './logo.svg';
 
@@ -22,7 +23,10 @@ export const Header: FC = () => {
 
   return (
     <div className={styles.header}>
-      <Logo />
+      <Logo className={styles.header_logo} />
+      <div className={styles.header_content}>
+        <ToggleTheme />
+      </div>
       <div className={styles.header_rightBlock}>
         <Switch
           value={switchLanguage}
