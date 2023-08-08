@@ -23,7 +23,7 @@
   cursor: text;
   opacity: 0.3s;
 
-  &::input-placeholder {
+  &::-webkit-input-placeholder {
     color: transparent;
   }
 
@@ -34,7 +34,7 @@
   &:focus {
     background-color: #fff;
 
-    &::input-placeholder {
+    &::-webkit-input-placeholder {
       color: #64748b;
     }
   }
