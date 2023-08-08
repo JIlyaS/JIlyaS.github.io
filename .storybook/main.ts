@@ -1,5 +1,8 @@
 import path from 'node:path';
 import type { StorybookConfig } from '@storybook/react-webpack5';
+const webpack = require('webpack');
+
+// import '../src/shared/config/i18n';
 
 const appSourceDir = path.join(__dirname, '..', 'src');
 
@@ -33,6 +36,12 @@ const config: StorybookConfig = {
       include: [appSourceDir],
       use: ['@svgr/webpack'],
     });
+
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        __IS_DEV__: process.env.NODE_ENV === 'development',
+      }),
+    );
 
     return config;
   },
