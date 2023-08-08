@@ -8,7 +8,7 @@ const meta = {
   title: 'components/Button',
   component: Button,
   argTypes: {
-    dimention: {
+    dimension: {
       type: 'string',
       description: 'Размер кнопки',
     },
@@ -41,7 +41,7 @@ export default meta;
 
 export const Default = {
   args: {
-    dimention: 'normal',
+    dimension: 'normal',
     type: 'primary',
     btnType: 'button',
     children: 'Кнопка',
@@ -54,7 +54,7 @@ export const Default = {
 
 export const ButtonWithSecondary: Story = {
   args: {
-    dimention: 'normal',
+    dimension: 'normal',
     type: 'secondary',
     btnType: 'button',
     children: 'Кнопка 2',
@@ -67,7 +67,7 @@ export const ButtonWithSecondary: Story = {
 
 export const ButtonWithSmall: Story = {
   args: {
-    dimention: 'small',
+    dimension: 'small',
     type: 'primary',
     btnType: 'button',
     children: 'Кнопка маленькая',
@@ -80,7 +80,7 @@ export const ButtonWithSmall: Story = {
 
 export const ButtonWithMedium: Story = {
   args: {
-    dimention: 'medium',
+    dimension: 'medium',
     type: 'primary',
     btnType: 'button',
     children: 'Кнопка средняя',
@@ -93,7 +93,7 @@ export const ButtonWithMedium: Story = {
 
 export const ButtonWithLoading: Story = {
   args: {
-    dimention: 'normal',
+    dimension: 'normal',
     type: 'primary',
     btnType: 'button',
     children: 'Кнопка с загрузкой',

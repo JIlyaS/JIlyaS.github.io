@@ -1,0 +1,63 @@
+.inputWrap {
+  position: relative;
+}
+
+.input {
+  border: none;
+
+  height: 56px;
+  padding: 16px 32px;
+
+  border-radius: 25px;
+
+  background-color: #eff6ff;
+
+  border: 1px solid transparent;
+  box-sizing: border-box;
+
+  cursor: text;
+
+  opacity: 0.3s;
+
+  &::-webkit-input-placeholder {
+    color: transparent;
+  }
+
+  &:hover {
+    border: 1px solid #3b82f6;
+  }
+
+  &:focus {
+    background-color: #ffffff;
+
+    &::-webkit-input-placeholder {
+      color: #64748b;
+    }
+  }
+
+  &:focus + .inputLabel {
+    transform: translate(-7px, -25px) scale(0.8);
+  }
+
+  &__small {
+    height: 46px;
+
+    &:focus + .inputLabel {
+      transform: translate(-9px, -23px) scale(0.75);
+    }
+  }
+}
+
+.inputLabel {
+  position: absolute;
+  top: 50%;
+  left: 32px;
+
+  color: #64748b;
+
+  transform: translateY(-50%);
+
+  cursor: text;
+
+  opacity: 0.3s;
+}

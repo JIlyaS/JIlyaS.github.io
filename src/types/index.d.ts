@@ -20,3 +20,5 @@ declare module '*.svg' {
 //   const classNames: IClassNames;
 //   export = classNames;
 // }
+
+declare const __IS_DEV__: boolean;
