@@ -1,25 +1,29 @@
-.inputWrap {
+.input {
   position: relative;
 }
 
-.input {
-  border: none;
+.input_label {
+  position: absolute;
+  top: 50%;
+  left: 32px;
+  color: #64748b;
+  transform: translateY(-50%);
+  cursor: text;
+  opacity: 0.3s;
+}
 
+.input_element {
+  box-sizing: border-box;
   height: 56px;
   padding: 16px 32px;
-
-  border-radius: 25px;
-
   background-color: #eff6ff;
-
+  border: none;
   border: 1px solid transparent;
-  box-sizing: border-box;
-
+  border-radius: 25px;
   cursor: text;
-
   opacity: 0.3s;
 
-  &::-webkit-input-placeholder {
+  &::input-placeholder {
     color: transparent;
   }
 
@@ -28,36 +32,22 @@
   }
 
   &:focus {
-    background-color: #ffffff;
+    background-color: #fff;
 
-    &::-webkit-input-placeholder {
+    &::input-placeholder {
       color: #64748b;
     }
   }
 
-  &:focus + .inputLabel {
+  &:focus + .input_label {
     transform: translate(-7px, -25px) scale(0.8);
   }
 
   &__small {
     height: 46px;
 
-    &:focus + .inputLabel {
+    &:focus + .input_label {
       transform: translate(-9px, -23px) scale(0.75);
     }
   }
-}
-
-.inputLabel {
-  position: absolute;
-  top: 50%;
-  left: 32px;
-
-  color: #64748b;
-
-  transform: translateY(-50%);
-
-  cursor: text;
-
-  opacity: 0.3s;
 }

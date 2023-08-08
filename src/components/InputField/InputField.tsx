@@ -24,16 +24,18 @@ export const InputField: FC<Props> = ({
   onChange,
 }) => {
   return (
-    <div className={styles.inputWrap}>
+    <div className={styles.input}>
       <input
         id={id}
-        className={classNames(styles.input, { [styles.input__small]: dimension === 'small' })}
+        className={classNames(styles.input_element, {
+          [styles.input_element__small]: dimension === 'small',
+        })}
         placeholder={placeholder}
         value={value}
         onChange={(evt) => onChange(evt.target.value)}
       />
       {label && (
-        <label htmlFor={id} className={styles.inputLabel}>
+        <label htmlFor={id} className={styles.input_label}>
           {label}
         </label>
       )}

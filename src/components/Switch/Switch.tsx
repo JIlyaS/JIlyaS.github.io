@@ -22,14 +22,14 @@ export const Switch: React.FC<Props> = ({ id = 'default', dimension, label, valu
         onChange={(evt) => onChange(evt.target.checked)}
       />
       <label
-        className={classNames(styles.switch_labelButton, {
-          [styles.switch_labelButton__active]: value,
+        className={classNames(styles.switch_label, {
+          [styles.switch_label__active]: value,
         })}
         htmlFor={`switch-${id}`}
       >
         <span className={styles.switch_button} />
       </label>
-      <label className={styles.switch_label} htmlFor={`switch-${id}`}>
+      <label className={styles.switch_text} htmlFor={`switch-${id}`}>
         {label}
       </label>
     </div>

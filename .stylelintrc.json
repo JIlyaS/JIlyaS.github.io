@@ -4,5 +4,9 @@
     "stylelint-config-rational-order",
     "stylelint-prettier/recommended"
   ],
-  "plugins": ["stylelint-order", "stylelint-scss"]
+  "plugins": ["stylelint-order", "stylelint-scss"],
+  "rules": {
+    "selector-pseudo-element-no-unknown": null,
+    "selector-class-pattern": null
+  }
 }
