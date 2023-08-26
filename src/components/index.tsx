@@ -7,6 +7,7 @@ import { Button } from './Button';
 import { InputField } from './InputField';
 import { Switch } from './Switch';
 import { ToggleTheme } from './ToggleTheme';
+import { List } from './List';
 
 export {
   Header,
@@ -18,4 +19,5 @@ export {
   InputField,
   Switch,
   ToggleTheme,
+  List,
 };

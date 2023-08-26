@@ -22,5 +22,6 @@ export const getValidates = (
   help: getHelp(errors, touched, submitCount),
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const get = <T = any>(path: string, object: unknown): T =>
   $get(path, object) as unknown as T;

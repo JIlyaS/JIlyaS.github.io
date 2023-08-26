@@ -10,6 +10,7 @@ interface Props {
   label?: string;
   placeholder?: string;
   dimension?: 'normal' | 'small';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   error?: any;
   value: string;
   onChange: (value: string) => void;

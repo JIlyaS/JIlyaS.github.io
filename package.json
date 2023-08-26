@@ -29,6 +29,7 @@
   "dependencies": {
     "antd": "^5.8.2",
     "classnames": "^2.3.2",
+    "date-fns": "^2.30.0",
     "formik": "^2.4.3",
     "i18next": "^23.4.1",
     "i18next-browser-languagedetector": "^7.1.0",
@@ -40,6 +41,7 @@
     "react-icons": "^4.10.1",
     "typescript": "^5.0.4",
     "unchanged": "^2.2.1",
+    "uuid": "^9.0.0",
     "yup": "^1.2.0"
   },
   "devDependencies": {
@@ -61,6 +63,7 @@
     "@types/hoist-non-react-statics": "^3.3.1",
     "@types/react": "^18.2.12",
     "@types/react-dom": "^18.2.5",
+    "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
     "babel-jest": "^29.5.0",
