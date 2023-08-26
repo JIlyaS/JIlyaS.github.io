@@ -1,0 +1,21 @@
+@import '../../../../app/styles/vars.module';
+
+.columnBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &_title {
+    color: $primary-text-color;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &_subtitle {
+    color: $secondary-text-color;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

@@ -1,14 +1,17 @@
 import { FC, Suspense, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Layout } from '../layouts/Layout';
 
-import { Modal, CardBrief, CardFull, CategoryIcon, Button } from '../components';
+import { List } from '../components';
 
-import { myOperation, myOperation2 } from './operation';
-// import { useTranslation } from 'react-i18next';
 import { LanguageProvider } from '../providers/i18n/LanguageProvider';
 
 import './styles/index.scss';
+
+import styles from './App.module.scss';
+import { getOperationDataList } from '../mock/mock';
+import { Operation } from '@src/types/Operation';
 
 // const Component = () => {
 //   const { t, i18n } = useTranslation();
@@ -26,20 +29,29 @@ import './styles/index.scss';
 // };
 
 export const App: FC = () => {
-  const [visible, setVisible] = useState(false);
+  // const [visible, setVisible] = useState(false);
+  const { t } = useTranslation();
+  const [operation, setOperation] = useState<Operation[]>(getOperationDataList(20));
 
   return (
     <Suspense fallback="">
       <LanguageProvider>
         <Layout sidebar={<div></div>}>
-          <Button dimension="small" onClick={() => setVisible(true)}>
+          {/* <Button dimension="small" onClick={() => setVisible(true)}>
             Модальное окно
           </Button>
           <Modal visible={visible} title="Модальное окно" onClose={() => setVisible(false)}>
             Default children text
-          </Modal>
+          </Modal> */}
+          <div className={styles.main}>
+            <List
+              title={t`content.operation.title`}
+              items={operation}
+              onLoadMore={() => setOperation((prev) => [...prev, ...getOperationDataList(20)])}
+            />
+          </div>
 
-          {myOperation.map((el) => (
+          {/* {myOperation.map((el) => (
             <CardBrief
               summ={el.summ}
               category={el.category}
@@ -62,7 +74,7 @@ export const App: FC = () => {
             name={myOperation2.name}
             income={myOperation2.income}
             icon={<CategoryIcon iconCategory={myOperation2.name} />}
-          />
+          /> */}
         </Layout>
       </LanguageProvider>
     </Suspense>

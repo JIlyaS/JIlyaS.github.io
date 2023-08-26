@@ -7,12 +7,22 @@ export const resources = {
       header: {
         language: 'English', // t`header.language`
       },
+      content: {
+        operation: {
+          title: 'Operations',
+        },
+      },
     },
   },
   ru: {
     translation: {
       header: {
         language: 'Русский', // t`header.language`
+      },
+      content: {
+        operation: {
+          title: 'Операции',
+        },
       },
     },
   },

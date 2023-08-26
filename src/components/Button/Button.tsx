@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import cn from 'classnames';
 import { FC, ReactNode } from 'react';
 
 import LoadIcon from '../../shared/assets/icons/undo.svg';
@@ -29,7 +29,7 @@ export const Button: FC<Props> = ({
   return (
     <button
       type={btnType}
-      className={classNames(
+      className={cn(
         styles.button,
         { [styles.button__small]: dimension === 'small' },
         { [styles.button__medium]: dimension === 'medium' },

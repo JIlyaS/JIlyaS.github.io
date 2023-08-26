@@ -1,0 +1,54 @@
+@import '../../../../app/styles/vars.module';
+
+.item {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) repeat(3, 150px) 120px; // minmax(120px, 1fr)
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  height: 86px;
+  padding: 12px 20px;
+  border-bottom: 1px solid rgb(148 163 184 / 100%);
+  cursor: pointer;
+
+  &_col {
+    width: 100%;
+  }
+
+  &_colWrap {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  &_colIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 63px;
+    min-height: 63px;
+    border: 1px solid $blue;
+    border-radius: 4px;
+
+    path {
+      fill: $blue;
+    }
+  }
+
+  &_type {
+    display: flex;
+    justify-content: center;
+
+    &__profit {
+      path {
+        fill: rgb(34 197 94 / 100%);
+      }
+    }
+
+    &__cost {
+      path {
+        fill: rgb(239 68 68 / 100%);
+      }
+    }
+  }
+}
