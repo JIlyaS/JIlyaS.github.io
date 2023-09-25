@@ -1,0 +1,17 @@
+.operationForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  &_btnGroup {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+  }
+
+  &_group {
+    display: flex;
+    gap: 8px;
+  }
+}

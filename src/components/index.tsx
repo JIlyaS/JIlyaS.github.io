@@ -8,6 +8,7 @@ import { InputField } from './InputField';
 import { Switch } from './Switch';
 import { ToggleTheme } from './ToggleTheme';
 import { List } from './List';
+import { Checkbox } from './Checkbox';
 
 export {
   Header,
@@ -20,4 +21,5 @@ export {
   Switch,
   ToggleTheme,
   List,
+  Checkbox,
 };

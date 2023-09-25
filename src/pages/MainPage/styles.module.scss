@@ -1,0 +1,14 @@
+.mainPage {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: calc(100vw - 264px);
+  height: calc(100vh - 70px - 50px - 50px + 16px);
+  padding-right: 50px;
+  padding-left: 50px;
+
+  &_header {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

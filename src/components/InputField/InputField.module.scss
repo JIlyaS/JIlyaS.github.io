@@ -1,21 +1,44 @@
 .input {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 25px 0;
+
+  &_required {
+    color: #f87171;
+  }
+
+  &_error {
+    position: absolute;
+    bottom: -20px;
+    left: 20px;
+    color: #f87171;
+    font-size: 12px;
+    line-height: 16px;
+  }
 }
 
 .input_label {
   position: absolute;
-  top: 50%;
-  left: 32px;
+  top: -12px;
+  left: 20px;
   color: #64748b;
   transform: translateY(-50%);
   cursor: text;
   opacity: 0.3s;
+
+  &__inner {
+    position: absolute;
+    top: 50%;
+    left: 32px;
+  }
 }
 
 .input_element {
   box-sizing: border-box;
   height: 56px;
-  padding: 16px 32px;
+  padding: 16px 20px;
   background-color: #eff6ff;
   border: none;
   border: 1px solid transparent;
@@ -39,15 +62,26 @@
     }
   }
 
-  &:focus + .input_label {
-    transform: translate(-7px, -25px) scale(0.8);
+  &__error {
+    background-color: #fee2e2;
+    border-color: #f87171;
   }
 
   &__small {
     height: 46px;
+  }
+
+  &__inner {
+    padding: 16px 32px;
 
     &:focus + .input_label {
-      transform: translate(-9px, -23px) scale(0.75);
+      transform: translate(-7px, -25px) scale(0.8);
+    }
+
+    &__small {
+      &:focus + .input_label {
+        transform: translate(-9px, -23px) scale(0.75);
+      }
     }
   }
 }

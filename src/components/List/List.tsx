@@ -11,9 +11,10 @@ interface Props {
   title: string;
   items: Operation[];
   onLoadMore: () => void;
+  onOpenEditModal: (id: string) => void;
 }
 
-export const List: FC<Props> = ({ items, title, onLoadMore }) => {
+export const List: FC<Props> = ({ items, title, onLoadMore, onOpenEditModal }) => {
   const targetRef = useIntersectionObserver(onLoadMore);
 
   return (
@@ -24,7 +25,7 @@ export const List: FC<Props> = ({ items, title, onLoadMore }) => {
       </div>
       <div className={styles.list_items}>
         {items.map((item, index) => (
-          <Item key={index} operation={item} />
+          <Item key={index} operation={item} onOpen={() => onOpenEditModal(item.id)} />
         ))}
         <div className={styles.list_loadMore} ref={targetRef}></div>
       </div>

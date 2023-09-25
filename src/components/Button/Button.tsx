@@ -5,35 +5,36 @@ import LoadIcon from '../../shared/assets/icons/undo.svg';
 
 import styles from './Button.module.scss';
 
-interface Props {
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   dimension?: 'small' | 'medium' | 'normal';
-  type?: 'primary' | 'secondary';
-  btnType?: 'submit' | 'button' | 'reset';
+  btnType?: 'primary' | 'secondary';
+  type?: 'submit' | 'button' | 'reset';
   children: ReactNode;
   loading?: boolean;
   iconLeft?: ReactNode;
   iconRight?: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const Button: FC<Props> = ({
   children,
-  type = 'primary',
   dimension = 'normal',
-  btnType = 'button',
+  btnType = 'primary',
   loading,
   iconLeft,
   iconRight,
   onClick,
+  ...props
 }) => {
   return (
     <button
-      type={btnType}
+      {...props}
       className={cn(
         styles.button,
+        props.className,
         { [styles.button__small]: dimension === 'small' },
         { [styles.button__medium]: dimension === 'medium' },
-        { [styles.button__secondary]: type === 'secondary' },
+        { [styles.button__secondary]: btnType === 'secondary' },
       )}
       onClick={onClick}
     >

@@ -12,11 +12,11 @@ const meta = {
       type: 'string',
       description: 'Размер кнопки',
     },
-    type: {
+    btnType: {
       type: 'string',
       description: 'Формат кнопки',
     },
-    btnType: {
+    type: {
       type: 'string',
       description: 'Тип кнопки',
     },
@@ -42,8 +42,8 @@ export default meta;
 export const Default = {
   args: {
     dimension: 'normal',
-    type: 'primary',
-    btnType: 'button',
+    btnType: 'primary',
+    type: 'button',
     children: 'Кнопка',
     loading: false,
     onClick: action('onClick'),
@@ -55,8 +55,8 @@ export const Default = {
 export const ButtonWithSecondary: Story = {
   args: {
     dimension: 'normal',
-    type: 'secondary',
-    btnType: 'button',
+    btnType: 'secondary',
+    type: 'button',
     children: 'Кнопка 2',
     loading: false,
     onClick: action('onClick'),
@@ -68,8 +68,8 @@ export const ButtonWithSecondary: Story = {
 export const ButtonWithSmall: Story = {
   args: {
     dimension: 'small',
-    type: 'primary',
-    btnType: 'button',
+    btnType: 'primary',
+    type: 'button',
     children: 'Кнопка маленькая',
     loading: false,
     onClick: action('onClick'),
@@ -81,8 +81,8 @@ export const ButtonWithSmall: Story = {
 export const ButtonWithMedium: Story = {
   args: {
     dimension: 'medium',
-    type: 'primary',
-    btnType: 'button',
+    btnType: 'primary',
+    type: 'button',
     children: 'Кнопка средняя',
     loading: false,
     onClick: action('onClick'),
@@ -94,8 +94,8 @@ export const ButtonWithMedium: Story = {
 export const ButtonWithLoading: Story = {
   args: {
     dimension: 'normal',
-    type: 'primary',
-    btnType: 'button',
+    btnType: 'primary',
+    type: 'button',
     children: 'Кнопка с загрузкой',
     loading: true,
     onClick: action('onClick'),

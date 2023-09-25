@@ -14,11 +14,12 @@ import { ColumnBlock } from '../ColumnBlock';
 
 interface Props {
   operation: Operation;
+  onOpen: () => void;
 }
 
-export const Item: FC<Props> = ({ operation }) => {
+export const Item: FC<Props> = ({ operation, onOpen }) => {
   return (
-    <div className={styles.item}>
+    <div className={styles.item} onClick={onOpen}>
       <div className={styles.item_col}>
         <div className={styles.item_colWrap}>
           <div className={styles.item_colIcon}>

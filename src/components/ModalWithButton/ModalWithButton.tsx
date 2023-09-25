@@ -9,7 +9,7 @@ export const ModalWithButton: FC = () => {
   const [value, setValue] = useState('');
   return (
     <div className={styles.modal_with_button}>
-      <InputField value={value} onChange={(value: string) => setValue(value)} />
+      <InputField value={value} isInnerLabel onChange={(evt) => setValue(evt.target.value)} />
       <Button onClick={() => setVisible(true)}>Модальное окно</Button>
       <Modal visible={visible} title="Модальное окно" onClose={() => setVisible(false)}>
         {value}
