@@ -39,6 +39,7 @@ export const Modal: FC<Props> = ({ children, visible, title, onClose }) => {
           aria-labelledby={title}
           tabIndex={-1}
           role="dialog"
+          onClick={(evt) => evt.stopPropagation()}
         >
           <div className={styles.modal_header}>
             <h2 className={styles.modal_title}>{title}</h2>

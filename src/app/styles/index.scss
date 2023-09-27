@@ -1,3 +1,7 @@
 @import './fonts';
 @import './reset';
 @import './vars.module';
+
+.app {
+  font: var(--font-m);
+}

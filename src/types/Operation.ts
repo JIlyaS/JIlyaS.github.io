@@ -5,11 +5,11 @@ export type Operation = {
   createdAt: Date;
   price: number;
   category: Category;
-  type: 'COST' | 'PROFIT';
+  type: 'income' | 'expense';
 };
 
 export type Category = {
   id: string;
   title: string;
-  type: 'FOOD' | 'SHOP';
+  type: 'food' | 'shop' | 'product';
 };

@@ -2,7 +2,7 @@ import type { Operation } from '@src/types/Operation';
 import { v4 as uuidv4 } from 'uuid';
 
 export const createRandomOperation = (createdAt: Date, typeValue: number): Operation => {
-  const operations: ['COST', 'PROFIT'] = ['COST', 'PROFIT'];
+  const operations: ['expense', 'income'] = ['expense', 'income'];
 
   return {
     id: uuidv4(),
@@ -12,8 +12,8 @@ export const createRandomOperation = (createdAt: Date, typeValue: number): Opera
     price: 500,
     category: {
       id: uuidv4(),
-      title: 'Еда',
-      type: 'SHOP',
+      title: 'Продукты',
+      type: 'product',
     },
     type: operations[typeValue],
   };

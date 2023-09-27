@@ -1,0 +1,21 @@
+.authPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--blue-gray-200);
+
+  &_content {
+    width: 40vw;
+    max-width: 380px;
+    max-height: 65vh;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 16px;
+  }
+
+  &_contentWrap {
+    margin-top: 12px;
+  }
+}
