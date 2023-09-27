@@ -8,7 +8,6 @@ import styles from './InputField.module.scss';
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   id?: string;
   label?: string;
-  placeholder?: string;
   dimension?: 'normal' | 'small';
   isInnerLabel?: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,7 +19,6 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 export const InputField: FC<Props> = ({
   id = 'default',
   label,
-  placeholder,
   dimension = 'normal',
   isInnerLabel = false,
   extraError,
@@ -39,7 +37,6 @@ export const InputField: FC<Props> = ({
           [styles.input_element__inner]: isInnerLabel,
           [styles.input_element__error]: extraError,
         })}
-        placeholder={placeholder}
         value={value}
         onChange={onChange}
       />

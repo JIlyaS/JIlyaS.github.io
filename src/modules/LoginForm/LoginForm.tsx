@@ -34,12 +34,18 @@ interface ILoginForm {
 }
 
 export const LoginForm: React.FC = () => {
-  const { control, handleSubmit } = useForm<ILoginForm>({
+  const { control, reset, handleSubmit } = useForm<ILoginForm>({
     resolver: yupResolver(schema),
     mode: 'onSubmit',
   });
 
-  const onSubmit: SubmitHandler<ILoginForm> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<ILoginForm> = (data) => {
+    console.log(data);
+    reset({
+      login: '',
+      password: '',
+    });
+  };
 
   return (
     <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>

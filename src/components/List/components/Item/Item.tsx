@@ -47,11 +47,11 @@ export const Item: FC<Props> = ({ operation, onOpen }) => {
       <div className={styles.item_col}>
         <div
           className={cn(styles.item_type, {
-            [styles.item_type__cost]: operation.type === 'COST',
-            [styles.item_type__profit]: operation.type === 'PROFIT',
+            [styles.item_type__expense]: operation.type === 'expense',
+            [styles.item_type__income]: operation.type === 'income',
           })}
         >
-          {operation.type === 'PROFIT' ? <IncomeIcon /> : <ExpenseIcon />}
+          {operation.type === 'income' ? <IncomeIcon /> : <ExpenseIcon />}
         </div>
       </div>
     </div>

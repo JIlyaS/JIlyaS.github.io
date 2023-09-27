@@ -7,12 +7,10 @@ import { Button, InputField } from '../../components';
 import styles from './RegistrationForm.module.scss';
 
 const schema = yup.object({
-  //name is required with minimum length of 8
   login: yup
     .string()
     .min(3, "Поле 'Логин' должно содержать минимум 3 символа")
     .required("Поле 'Логин' является обязательным полем"),
-  // password is required with minimum length of 8
   email: yup
     .string()
     .email("Поле 'Email' должно быть валидным")
@@ -20,16 +18,8 @@ const schema = yup.object({
   password: yup
     .string()
     .min(8, "Поле 'Пароль' должно содержать минимум 8 символа")
+    .max(16, "Поле 'Пароль' не должно быть больше 16 символов")
     .required("Поле 'Пароль' является обязательным полем"),
-  // // email is required with email format
-  // email: yup.string().email().required(),
-  // // phone number needs to match the regex expression
-  // phone: yup
-  //   .string()
-  //   .matches(
-  //     /^1?[ -.]?\(?([2-9][0-9]{2})\)?[ -.]?([2-9][0-9]{2})[ -.]?([0-9]{4})$/,
-  //     "Enter a valid phone number"
-  //   ),
 });
 
 interface IRegistrationForm {
@@ -39,12 +29,19 @@ interface IRegistrationForm {
 }
 
 export const RegistrationForm: React.FC = () => {
-  const { control, handleSubmit } = useForm<IRegistrationForm>({
+  const { control, reset, handleSubmit } = useForm<IRegistrationForm>({
     resolver: yupResolver(schema),
     mode: 'onSubmit',
   });
 
-  const onSubmit: SubmitHandler<IRegistrationForm> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<IRegistrationForm> = (data) => {
+    console.log(data);
+    reset({
+      login: '',
+      email: '',
+      password: '',
+    });
+  };
 
   return (
     <form className={styles.registrationForm} onSubmit={handleSubmit(onSubmit)}>

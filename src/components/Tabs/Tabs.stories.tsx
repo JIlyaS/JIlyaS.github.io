@@ -1,17 +1,41 @@
-import cn from 'classnames';
+import { Tabs } from './Tabs';
+import type { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
-interface Props {
-  navLabel: string;
-  className: string;
-  onChangeActiveTab: (label: string) => void;
-}
+type Story = StoryObj<typeof Tabs>;
 
-export const TabBarNav: React.FC<Props> = ({ navLabel, className, onChangeActiveTab }) => {
-  const classes = cn('nav-item', className);
+const meta = {
+  title: 'components/Tabs',
+  component: Tabs,
+  argTypes: {
+    className: {
+      type: 'string',
+      description: 'Класс для стилизации',
+    },
+    tabs: {
+      description: 'Объект с данными табов',
+    },
+    activeTab: {
+      type: 'string',
+      description: 'Активный таб',
+    },
+    onChange: {
+      type: 'function',
+      description: 'Событие изменения таба',
+    },
+  },
+} satisfies Meta<typeof Tabs>;
 
-  return (
-    <button className={classes} onClick={() => onChangeActiveTab(navLabel)}>
-      {navLabel}
-    </button>
-  );
-};
+export default meta;
+
+export const Default = {
+  args: {
+    className: '',
+    tabs: [
+      { id: 'login', content: 'Войти' },
+      { id: 'reg', content: 'Регистрация' },
+    ],
+    activeTab: 'login',
+    onChange: action('onChange'),
+  },
+} satisfies Story;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Layout } from '../../layouts/Layout';
@@ -15,7 +15,22 @@ export const MainPage: React.FC = () => {
   const [operationId, setOperationId] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useTranslation();
-  const [operation, setOperation] = useState<Operation[]>(getOperationDataList(20));
+  const [operations, setOperations] = useState<Operation[]>(getOperationDataList(20));
+
+  const handleOpenModal = (id: string) => {
+    setOperationId(id);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setOperationId(null);
+  };
+
+  const currentOperation = useMemo(
+    () => operations.find((item) => item.id === operationId),
+    [operations, operationId],
+  );
 
   return (
     <Layout sidebar={<div></div>}>
@@ -27,13 +42,21 @@ export const MainPage: React.FC = () => {
         </div>
         <List
           title={t`content.operation.title`}
-          items={operation}
-          onOpenEditModal={(id) => setOperationId(id)}
-          onLoadMore={() => setOperation((prev) => [...prev, ...getOperationDataList(20)])}
+          items={operations}
+          onOpenEditModal={handleOpenModal}
+          onLoadMore={() => setOperations((prev) => [...prev, ...getOperationDataList(20)])}
         />
       </div>
-      <Modal visible={isModalOpen} title="Создание операции" onClose={() => setIsModalOpen(false)}>
-        <OperationForm onClose={() => setIsModalOpen(false)} />
+      <Modal
+        visible={isModalOpen}
+        title={operationId ? 'Редактирование операции' : 'Создание операции'}
+        onClose={handleCloseModal}
+      >
+        <OperationForm
+          operation={currentOperation}
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+        />
       </Modal>
     </Layout>
   );
