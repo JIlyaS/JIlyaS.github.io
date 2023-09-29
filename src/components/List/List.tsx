@@ -24,8 +24,8 @@ export const List: FC<Props> = ({ items, title, onLoadMore, onOpenEditModal }) =
         <div></div>
       </div>
       <div className={styles.list_items}>
-        {items.map((item, index) => (
-          <Item key={index} operation={item} onOpen={() => onOpenEditModal(item.id)} />
+        {items.map((item) => (
+          <Item key={item.id} operation={item} onOpen={() => onOpenEditModal(item.id)} />
         ))}
         <div className={styles.list_loadMore} ref={targetRef}></div>
       </div>

@@ -19,7 +19,6 @@ export const ThemeContext = createContext<ThemeContextType>({} as ThemeContextTy
 export const useThemeContext = (): ThemeContextType => useContext(ThemeContext);
 export const ThemeProvider: FC<IThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(getDefaultTheme());
-  console.log(theme);
 
   useInsertionEffect(() => {
     localStorage.setItem(keyLocalStorageTheme, theme);

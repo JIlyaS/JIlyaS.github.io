@@ -1,8 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Layout } from '../../layouts/Layout';
-
 import { Button, List, Modal } from '../../components';
 import { OperationForm } from '../../modules/OperationForm';
 
@@ -33,7 +31,7 @@ export const MainPage: React.FC = () => {
   );
 
   return (
-    <Layout sidebar={<div></div>}>
+    <div>
       <div className={styles.mainPage}>
         <div className={styles.mainPage_header}>
           <Button dimension="medium" onClick={() => setIsModalOpen(true)}>
@@ -58,6 +56,6 @@ export const MainPage: React.FC = () => {
           onClose={handleCloseModal}
         />
       </Modal>
-    </Layout>
+    </div>
   );
 };

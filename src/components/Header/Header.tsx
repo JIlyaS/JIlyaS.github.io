@@ -1,6 +1,7 @@
 import React, { FC, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
+import cn from 'classnames';
 
 import { Avatar } from '../Avatar';
 import { LanguageContext } from '../../providers/i18n/LanguageProvider';
@@ -26,8 +27,30 @@ export const Header: FC = () => {
     <div className={styles.header}>
       <Logo className={styles.header_logo} />
       <div className={styles.header_content}>
-        <NavLink to="/">Главная страница</NavLink>
-        <ToggleTheme />
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            cn(styles.header_link, { [styles.header_link__active]: isActive })
+          }
+        >
+          Главная страница
+        </NavLink>
+        <NavLink
+          to="/profile"
+          className={({ isActive }) =>
+            cn(styles.header_link, { [styles.header_link__active]: isActive })
+          }
+        >
+          Профиль
+        </NavLink>
+        <NavLink
+          to="/auth"
+          className={({ isActive }) =>
+            cn(styles.header_link, { [styles.header_link__active]: isActive })
+          }
+        >
+          Войти
+        </NavLink>
       </div>
       <div className={styles.header_rightBlock}>
         <Switch
@@ -36,7 +59,7 @@ export const Header: FC = () => {
           label={t`header.language`}
           onChange={handleLanguageChange}
         />
-        <NavLink to="/auth">Войти</NavLink>
+        <ToggleTheme />
         <Avatar />
       </div>
     </div>
