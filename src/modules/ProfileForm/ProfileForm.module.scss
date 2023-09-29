@@ -1,0 +1,23 @@
+.profileForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 24px;
+
+  &_block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  &_groupBtn {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    padding-top: 12px;
+  }
+}

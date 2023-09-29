@@ -18,13 +18,13 @@ export default meta;
 
 export const Default = {
   args: {
-    children: 'Контентная часть',
+    // children: 'Контентная часть',
   },
 } satisfies Story;
 
 export const LayoutWithSidebar = {
   args: {
-    children: 'Контентная часть',
+    // children: 'Контентная часть',
     sidebar: <div>123</div>,
   },
 };

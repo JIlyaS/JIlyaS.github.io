@@ -73,7 +73,6 @@ export const OperationForm: React.FC<Props> = ({ operation, isOpen, onClose }) =
 
   useEffect(() => {
     if (operation) {
-      console.log("operation.category.type", operation.category.type);
       setDefaultValue({
         id: operation.id,
         type: operation.type,
