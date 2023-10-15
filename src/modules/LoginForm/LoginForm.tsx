@@ -5,60 +5,57 @@ import * as yup from 'yup';
 import { Button, InputField } from '../../components';
 
 import styles from './LoginForm.module.scss';
+import { fetchSignIn } from '../../slices/auth';
+import { useAppDispatch } from '../../store';
 
 const schema = yup.object({
-  //name is required with minimum length of 8
-  login: yup
+  email: yup
     .string()
-    .min(3, "Поле 'Логин' должно содержать минимум 3 символа")
-    .required("Поле 'Логин' является обязательным полем"),
-  // password is required with minimum length of 8
+    .email("Поле 'Email' должно быть валидным")
+    .required("Поле 'Email' является обязательным полем"),
   password: yup
     .string()
     .min(8, "Поле 'Пароль' должно содержать минимум 8 символа")
     .required("Поле 'Пароль' является обязательным полем"),
-  // // email is required with email format
-  // email: yup.string().email().required(),
-  // // phone number needs to match the regex expression
-  // phone: yup
-  //   .string()
-  //   .matches(
-  //     /^1?[ -.]?\(?([2-9][0-9]{2})\)?[ -.]?([2-9][0-9]{2})[ -.]?([0-9]{4})$/,
-  //     "Enter a valid phone number"
-  //   ),
+  commandId: yup.string(),
 });
 
 interface ILoginForm {
-  login?: string;
-  password?: string;
+  email: string;
+  password: string;
+  commandId?: string;
 }
 
 export const LoginForm: React.FC = () => {
+  const dispatch = useAppDispatch();
   const { control, reset, handleSubmit } = useForm<ILoginForm>({
-    resolver: yupResolver(schema),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    resolver: yupResolver<any>(schema),
     mode: 'onSubmit',
+    defaultValues: {
+      email: '',
+      password: '',
+      commandId: '',
+    },
   });
 
   const onSubmit: SubmitHandler<ILoginForm> = (data) => {
     console.log(data);
-    reset({
-      login: '',
-      password: '',
-    });
+    dispatch(fetchSignIn(data));
   };
 
   return (
     <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
       <Controller
-        name="login"
+        name="email"
         control={control}
         render={({ field, fieldState: { error } }) => (
           <InputField
-            id="login"
-            label="Логин"
+            id="email"
+            label="Email"
             dimension="small"
             extraError={error?.message}
-            placeholder="Введите логин"
+            placeholder="Введите почту"
             required
             {...field}
           />
@@ -76,6 +73,20 @@ export const LoginForm: React.FC = () => {
             placeholder="Введите пароль"
             extraError={error?.message}
             required
+            {...field}
+          />
+        )}
+      />
+      <Controller
+        name="commandId"
+        control={control}
+        render={({ field, fieldState: { error } }) => (
+          <InputField
+            id="commandId"
+            label="Идентификатор команды"
+            dimension="small"
+            extraError={error?.message}
+            placeholder="Введите идентификатор команды"
             {...field}
           />
         )}

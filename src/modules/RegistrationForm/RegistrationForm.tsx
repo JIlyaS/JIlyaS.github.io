@@ -5,12 +5,10 @@ import * as yup from 'yup';
 import { Button, InputField } from '../../components';
 
 import styles from './RegistrationForm.module.scss';
+import { fetchSignUp } from '../../slices/auth';
+import { useAppDispatch } from '../../store';
 
-const schema = yup.object({
-  login: yup
-    .string()
-    .min(3, "Поле 'Логин' должно содержать минимум 3 символа")
-    .required("Поле 'Логин' является обязательным полем"),
+const schema = yup.object().shape({
   email: yup
     .string()
     .email("Поле 'Email' должно быть валидным")
@@ -20,46 +18,35 @@ const schema = yup.object({
     .min(8, "Поле 'Пароль' должно содержать минимум 8 символа")
     .max(16, "Поле 'Пароль' не должно быть больше 16 символов")
     .required("Поле 'Пароль' является обязательным полем"),
+  commandId: yup.string(),
 });
 
 interface IRegistrationForm {
-  login?: string;
-  email?: string;
-  password?: string;
+  email: string;
+  password: string;
+  commandId: string;
 }
 
 export const RegistrationForm: React.FC = () => {
-  const { control, reset, handleSubmit } = useForm<IRegistrationForm>({
-    resolver: yupResolver(schema),
+  const dispatch = useAppDispatch();
+  const { control, handleSubmit } = useForm<IRegistrationForm>({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    resolver: yupResolver<any>(schema),
     mode: 'onSubmit',
+    defaultValues: {
+      email: '',
+      password: '',
+      commandId: '',
+    },
   });
 
   const onSubmit: SubmitHandler<IRegistrationForm> = (data) => {
-    console.log(data);
-    reset({
-      login: '',
-      email: '',
-      password: '',
-    });
+    console.log('data', data);
+    dispatch(fetchSignUp(data));
   };
 
   return (
     <form className={styles.registrationForm} onSubmit={handleSubmit(onSubmit)}>
-      <Controller
-        name="login"
-        control={control}
-        render={({ field, fieldState: { error } }) => (
-          <InputField
-            id="login"
-            label="Логин"
-            dimension="small"
-            extraError={error?.message}
-            placeholder="Введите логин"
-            required
-            {...field}
-          />
-        )}
-      />
       <Controller
         name="email"
         control={control}
@@ -91,7 +78,21 @@ export const RegistrationForm: React.FC = () => {
           />
         )}
       />
-      <Button className={styles.loginForm_submit} type="submit">
+      <Controller
+        name="commandId"
+        control={control}
+        render={({ field, fieldState: { error } }) => (
+          <InputField
+            id="commandId"
+            label="Идентификатор команды"
+            dimension="small"
+            extraError={error?.message}
+            placeholder="Введите идентификатор команды"
+            {...field}
+          />
+        )}
+      />
+      <Button className={styles.registrationForm_submit} type="submit">
         Регистрация
       </Button>
     </form>

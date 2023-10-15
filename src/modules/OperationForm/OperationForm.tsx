@@ -11,7 +11,8 @@ import IncomeIcon from '../../shared/assets/icons/income-icon.svg';
 import ExpenseIcon from '../../shared/assets/icons/expense-icon.svg';
 
 import styles from './OperationForm.module.scss';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '@src/providers/auth/AuthContext';
 
 const schema = yup.object({
   type: yup.string().required("Поле 'Тип' является обязательным полем"),
@@ -64,6 +65,8 @@ export const OperationForm: React.FC<Props> = ({ operation, isOpen, onClose }) =
     price: "",
     operationType: "",
   });
+
+  const isLoggedIn = useContext(AuthContext);
 
   const { control, setValue, clearErrors, reset, handleSubmit } = useForm<IOperationForm>({
     resolver: yupResolver(schema),
@@ -261,7 +264,7 @@ export const OperationForm: React.FC<Props> = ({ operation, isOpen, onClose }) =
         <Button className={styles.operationForm_cancel} type="button" onClick={onClose}>
           Отмена
         </Button>
-        <Button className={styles.operationForm_submit} type="submit">
+        <Button className={styles.operationForm_submit} disabled={!isLoggedIn} type="submit">
           Сохранить
         </Button>
       </div>

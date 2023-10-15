@@ -2,6 +2,7 @@ const path = require('node:path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = (env) => {
   const mode = env.mode ?? 'development';
@@ -93,9 +94,15 @@ module.exports = (env) => {
     },
     resolve: {
       extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
-      alias: {},
+      alias: {
+        '@src': path.resolve(__dirname, 'src'),
+      },
     },
     plugins: [
+      new Dotenv({
+        path: './',
+        safe: true,
+      }),
       new webpack.ProgressPlugin(),
       new HTMLWebpackPlugin({
         template: path.resolve(__dirname, 'public', 'index.html'),
