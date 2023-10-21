@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import makeRequest from '../makeRequest';
-import { IUpdateProfileRequest, Profile } from '@src/types/profile';
+import { IUpdateProfileRequest, Profile } from '@src/entities/profile';
 
 export const fetchProfileRequest = (): Promise<AxiosResponse<Profile>> => {
   return makeRequest({

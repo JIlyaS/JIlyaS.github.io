@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IAuthResponse, ILoginRequest, IRegistrationRequest } from '@src/types/auth';
+import { IAuthResponse, ILoginRequest, IRegistrationRequest } from '@src/entities/auth';
 import { NavigateFunction } from 'react-router-dom';
 
 interface AuthState {
