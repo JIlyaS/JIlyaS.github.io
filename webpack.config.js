@@ -12,10 +12,13 @@ module.exports = (env) => {
   const isProd = mode === 'production';
 
   const newEnv = dotenv.config().parsed;
-  const envKeys = Object.keys(newEnv).reduce((prev, next) => {
-    prev[`process.env.${next}`] = JSON.stringify(newEnv[next]);
-    return prev;
-  }, {});
+  let envKeys = {};
+  if (newEnv) {
+    envKeys = Object.keys(newEnv).reduce((prev, next) => {
+      prev[`process.env.${next}`] = JSON.stringify(newEnv[next]);
+      return prev;
+    }, {});
+  }
 
   return {
     mode,
