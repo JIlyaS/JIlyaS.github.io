@@ -1,4 +1,5 @@
-import { put, call, all, takeLatest } from 'redux-saga/effects';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { put, call, takeLatest } from 'redux-saga/effects';
 
 import { fetchProfileRequest, fetchUpdateProfileRequest } from '../api/rest/profile';
 import {

@@ -7,8 +7,7 @@ import { Button, InputField } from '../../components';
 
 import styles from './ProfileForm.module.scss';
 import { useAppDispatch, useAppSelector } from '@src/store';
-import { useEffect, useState } from 'react';
-import { Profile } from '@src/types/profile';
+import { useEffect } from 'react';
 import { fetchUpdateProfile } from '@src/slices/profile';
 
 const schema = yup.object({

@@ -30,7 +30,7 @@ interface ILoginForm {
 export const LoginForm: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { control, reset, handleSubmit } = useForm<ILoginForm>({
+  const { control, handleSubmit } = useForm<ILoginForm>({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resolver: yupResolver<any>(schema),
     mode: 'onSubmit',

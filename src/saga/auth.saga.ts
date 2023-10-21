@@ -1,4 +1,5 @@
-import { put, call, all, takeLatest, takeEvery } from 'redux-saga/effects';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { put, call, takeLatest } from 'redux-saga/effects';
 
 import { fetchSignInRequest, fetchSignUpRequest } from '../api/rest/auth';
 import { fetchSignIn, fetchSignUp, setToken } from '../slices/auth';
