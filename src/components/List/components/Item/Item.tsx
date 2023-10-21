@@ -7,10 +7,11 @@ import IncomeIcon from '../../../../shared/assets/icons/income-icon.svg';
 import ExpenseIcon from '../../../../shared/assets/icons/expense-icon.svg';
 import ShopIcon from '../../../../shared/assets/icons/shop-icon.svg';
 
-import type { Operation } from '@src/types/Operation';
+import { ColumnBlock } from '../ColumnBlock';
+
+import type { Operation } from '@src/types/operation';
 
 import styles from './Item.module.scss';
-import { ColumnBlock } from '../ColumnBlock';
 
 interface Props {
   operation: Operation;

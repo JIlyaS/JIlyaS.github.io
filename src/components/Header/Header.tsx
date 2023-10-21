@@ -3,10 +3,15 @@ import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 
+import { useAppDispatch } from '@src/store';
+import { logout } from '@src/slices/auth';
+
 import { Avatar } from '../Avatar';
 import { LanguageContext } from '../../providers/i18n/LanguageProvider';
 import { Switch } from '../Switch';
 import { ToggleTheme } from '../ToggleTheme';
+import { AuthContext } from '@src/providers/auth/AuthContext';
+import { Button } from '../Button';
 
 import Logo from './logo.svg';
 
@@ -14,6 +19,8 @@ import styles from './Header.module.scss';
 
 export const Header: FC = () => {
   const { lang, toggleLanguage } = useContext(LanguageContext);
+  const isLoggedIn = useContext(AuthContext);
+  const dispatch = useAppDispatch();
 
   const [switchLanguage, setSwitchLanguage] = useState(lang === 'ru' ? false : true);
   const { t } = useTranslation();
@@ -21,6 +28,10 @@ export const Header: FC = () => {
   const handleLanguageChange = () => {
     setSwitchLanguage(() => !switchLanguage);
     toggleLanguage();
+  };
+
+  const handleLogoutClick = () => {
+    dispatch(logout());
   };
 
   return (
@@ -35,22 +46,30 @@ export const Header: FC = () => {
         >
           Главная страница
         </NavLink>
-        <NavLink
-          to="/profile"
-          className={({ isActive }) =>
-            cn(styles.header_link, { [styles.header_link__active]: isActive })
-          }
-        >
-          Профиль
-        </NavLink>
-        <NavLink
-          to="/auth"
-          className={({ isActive }) =>
-            cn(styles.header_link, { [styles.header_link__active]: isActive })
-          }
-        >
-          Войти
-        </NavLink>
+        {isLoggedIn && (
+          <NavLink
+            to="/profile"
+            className={({ isActive }) =>
+              cn(styles.header_link, { [styles.header_link__active]: isActive })
+            }
+          >
+            Профиль
+          </NavLink>
+        )}
+        {isLoggedIn ? (
+          <Button dimension="small" btnType="secondary" onClick={handleLogoutClick}>
+            Выйти
+          </Button>
+        ) : (
+          <NavLink
+            to="/auth"
+            className={({ isActive }) =>
+              cn(styles.header_link, { [styles.header_link__active]: isActive })
+            }
+          >
+            Войти
+          </NavLink>
+        )}
       </div>
       <div className={styles.header_rightBlock}>
         <Switch
