@@ -9,7 +9,7 @@ import ShopIcon from '../../../../shared/assets/icons/shop-icon.svg';
 
 import { ColumnBlock } from '../ColumnBlock';
 
-import type { Operation } from '@src/types/operation';
+import { Operation } from '../../../../types/operation';
 
 import styles from './Item.module.scss';
 
