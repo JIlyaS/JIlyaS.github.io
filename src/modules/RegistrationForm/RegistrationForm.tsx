@@ -7,6 +7,7 @@ import { Button, InputField } from '../../components';
 import styles from './RegistrationForm.module.scss';
 import { fetchSignUp } from '../../slices/auth';
 import { useAppDispatch } from '../../store';
+import { useNavigate } from 'react-router-dom';
 
 const schema = yup.object().shape({
   email: yup
@@ -29,6 +30,8 @@ interface IRegistrationForm {
 
 export const RegistrationForm: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const { control, handleSubmit } = useForm<IRegistrationForm>({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resolver: yupResolver<any>(schema),
@@ -41,8 +44,7 @@ export const RegistrationForm: React.FC = () => {
   });
 
   const onSubmit: SubmitHandler<IRegistrationForm> = (data) => {
-    console.log('data', data);
-    dispatch(fetchSignUp(data));
+    dispatch(fetchSignUp({ data, navigate }));
   };
 
   return (

@@ -7,6 +7,7 @@ import { Button, InputField } from '../../components';
 import styles from './LoginForm.module.scss';
 import { fetchSignIn } from '../../slices/auth';
 import { useAppDispatch } from '../../store';
+import { useNavigate } from 'react-router-dom';
 
 const schema = yup.object({
   email: yup
@@ -28,6 +29,7 @@ interface ILoginForm {
 
 export const LoginForm: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { control, reset, handleSubmit } = useForm<ILoginForm>({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resolver: yupResolver<any>(schema),
@@ -40,8 +42,7 @@ export const LoginForm: React.FC = () => {
   });
 
   const onSubmit: SubmitHandler<ILoginForm> = (data) => {
-    console.log(data);
-    dispatch(fetchSignIn(data));
+    dispatch(fetchSignIn({ data, navigate }));
   };
 
   return (

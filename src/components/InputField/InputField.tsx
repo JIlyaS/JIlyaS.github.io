@@ -13,6 +13,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   extraError?: any;
   value: string;
+  disabled?: boolean;
   // onChange: (evt: string) => void;
 }
 
@@ -23,6 +24,7 @@ export const InputField: FC<Props> = ({
   isInnerLabel = false,
   extraError,
   required,
+  disabled,
   value,
   onChange,
   ...props
@@ -32,10 +34,12 @@ export const InputField: FC<Props> = ({
       <input
         {...props}
         id={id}
+        disabled={disabled}
         className={cn(styles.input_element, {
           [styles.input_element__small]: dimension === 'small',
           [styles.input_element__inner]: isInnerLabel,
           [styles.input_element__error]: extraError,
+          [styles.input_element__disabled]: disabled,
         })}
         value={value}
         onChange={onChange}

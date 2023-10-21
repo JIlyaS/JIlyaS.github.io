@@ -6,10 +6,10 @@ import { fetchSignIn, fetchSignUp, setToken } from '../slices/auth';
 export function* signUp(action: any) {
   // IRegistrationRequest
   try {
-    const { data } = yield call(fetchSignUpRequest, { ...action.payload });
-    console.log('data', data, action.payload);
+    const { data } = yield call(fetchSignUpRequest, { ...action.payload.data });
     yield call(storeToken, data.token);
     yield put(setToken(data));
+    yield put(action.payload.navigate('/'));
   } catch (err) {
     console.error(err);
     // yield put(
@@ -22,10 +22,10 @@ export function* signUp(action: any) {
 
 export function* signIn(action: any) {
   try {
-    const { data } = yield call(fetchSignInRequest, { ...action.payload });
-    console.log('data', data, action.payload);
+    const { data } = yield call(fetchSignInRequest, { ...action.payload.data });
     yield call(storeToken, data.token);
     yield put(setToken(data));
+    yield put(action.payload.navigate('/'));
   } catch (err) {
     console.error(err);
   }

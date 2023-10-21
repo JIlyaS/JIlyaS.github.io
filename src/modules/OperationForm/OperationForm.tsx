@@ -118,7 +118,6 @@ export const OperationForm: React.FC<Props> = ({ operation, isOpen, onClose }) =
 
 
   const onSubmit: SubmitHandler<IOperationForm> = (data) => {
-    console.log(data);
     reset({
       type: '',
       title: '',

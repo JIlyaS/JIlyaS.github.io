@@ -4,3 +4,7 @@ export type Profile = {
   email: string;
   signUpDate: Date;
 };
+
+export interface IUpdateProfileRequest {
+  name: string;
+}

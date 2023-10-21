@@ -6,6 +6,7 @@ import logger from 'redux-logger';
 // import { rootSaga } from '../saga';
 import authSaga from '../saga/auth.saga';
 import rootReducer from '../slices';
+import profileSaga from '../saga/profile.saga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -17,6 +18,7 @@ const store = configureStore({
 
 // sagaMiddleware.run(rootSaga);
 sagaMiddleware.run(authSaga);
+sagaMiddleware.run(profileSaga);
 
 export type AppStore = typeof store;
 export type AppDispatch = AppStore['dispatch'];

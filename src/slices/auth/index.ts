@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IAuthResponse, ILoginRequest, IRegistrationRequest } from '@src/types/auth';
+import { NavigateFunction } from 'react-router-dom';
 
 interface AuthState {
   loadingRegistration: boolean;
@@ -20,8 +21,10 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    fetchSignUp(state, { payload }: PayloadAction<IRegistrationRequest>) {
-      console.log('123');
+    fetchSignUp(
+      state,
+      { payload }: PayloadAction<{ data: IRegistrationRequest; navigate: NavigateFunction }>,
+    ) {
       state.loadingRegistration = true;
     },
     fetchSignUpSuccess(state) {
@@ -31,7 +34,10 @@ export const authSlice = createSlice({
       state.loadingRegistration = false;
     },
 
-    fetchSignIn(state, { payload }: PayloadAction<ILoginRequest>) {
+    fetchSignIn(
+      state,
+      { payload }: PayloadAction<{ data: ILoginRequest; navigate: NavigateFunction }>,
+    ) {
       state.loadingLogin = true;
     },
     fetchSignInSuccess(state) {

@@ -45,12 +45,11 @@
   border: none;
   border: 1px solid transparent;
   border-radius: 25px;
-  cursor: text;
-  cursor: default;
+  cursor: pointer;
   opacity: 0.3s;
 
   &:hover {
-    border: 1px solid #3b82f6;
+    border-color: #3b82f6;
   }
 
   &:focus {
@@ -64,6 +63,25 @@
   &__error {
     background-color: #fee2e2;
     border-color: #f87171;
+  }
+
+  &__disabled {
+    background-color: #eff6ff;
+    cursor: default;
+
+    &:hover {
+      border-color: transparent;
+    }
+
+    &:focus {
+      background-color: #eff6ff;
+      border-color: transparent;
+      outline: none;
+
+      &::-webkit-input-placeholder {
+        color: transparent;
+      }
+    }
   }
 
   &__small {

@@ -17,8 +17,6 @@ export const MainPage: React.FC = () => {
   const [operations, setOperations] = useState<Operation[]>(getOperationDataList(20));
   const isLoggedIn = useContext(AuthContext);
 
-  console.log('isLoggedIn', isLoggedIn);
-
   const handleOpenModal = (id: string) => {
     setOperationId(id);
     setIsModalOpen(true);
