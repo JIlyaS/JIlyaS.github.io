@@ -1,4 +1,4 @@
-import type { Operation } from '@src/types/operation';
+import { Operation } from '../types/operation';
 import { v4 as uuidv4 } from 'uuid';
 
 export const createRandomOperation = (createdAt: Date, typeValue: number): Operation => {
