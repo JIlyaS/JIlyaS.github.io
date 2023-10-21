@@ -3,12 +3,19 @@ const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const dotenv = require('dotenv');
 
 module.exports = (env) => {
   const mode = env.mode ?? 'development';
   const port = env.port ?? '3000';
 
   const isProd = mode === 'production';
+
+  const newEnv = dotenv.config().parsed;
+  const envKeys = Object.keys(newEnv).reduce((prev, next) => {
+    prev[`process.env.${next}`] = JSON.stringify(newEnv[next]);
+    return prev;
+  }, {});
 
   return {
     mode,
@@ -114,6 +121,7 @@ module.exports = (env) => {
       }),
       new webpack.DefinePlugin({
         __IS_DEV__: JSON.stringify(!isProd),
+        ...envKeys,
       }),
     ],
   };

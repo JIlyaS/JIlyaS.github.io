@@ -32,7 +32,7 @@ export default ({
   }
 
   const configAxios: AxiosRequestConfig = {
-    url: `http://19429ba06ff2.vps.myjino.ru/api${url}`,
+    url: `${process.env.API_PATH}${url}`,
     method,
     headers: headerObj,
     params,
