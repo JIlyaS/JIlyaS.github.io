@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import makeRequest from '../makeRequest';
-import { IAuthResponse, ILoginRequest, IRegistrationRequest } from '@src/types/auth';
+import { IAuthResponse, ILoginRequest, IRegistrationRequest } from '@src/entities/auth';
 
 export const fetchSignUpRequest = (
   data: IRegistrationRequest,

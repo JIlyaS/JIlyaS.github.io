@@ -5,7 +5,7 @@ import { Button, List, Modal } from '../../components';
 import { OperationForm } from '../../modules/OperationForm';
 
 import { getOperationDataList } from '../../mock/mock';
-import { Operation } from '../../types/operation';
+import { Operation } from '../../entities/operation';
 
 import styles from './styles.module.scss';
 import { AuthContext } from '@src/providers/auth/AuthContext';

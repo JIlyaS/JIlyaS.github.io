@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IUpdateProfileRequest, Profile } from '@src/types/profile';
+import { IUpdateProfileRequest, Profile } from '@src/entities/profile';
 
 interface ProfileState {
   loadingProfile: boolean;

@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Item } from './components';
 import { useIntersectionObserver } from '../../hooks';
 
-import { Operation } from '../../types/operation';
+import { Operation } from '../../entities/operation';
 
 import styles from './List.module.scss';
 
