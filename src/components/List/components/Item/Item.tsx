@@ -3,8 +3,8 @@ import cn from 'classnames';
 import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
 
-import IncomeIcon from '../../../../shared/assets/icons/income-icon.svg';
-import ExpenseIcon from '../../../../shared/assets/icons/expense-icon.svg';
+import ProfitIcon from '../../../../shared/assets/icons/profit-icon.svg';
+import CostIcon from '../../../../shared/assets/icons/cost-icon.svg';
 import ShopIcon from '../../../../shared/assets/icons/shop-icon.svg';
 
 import { ColumnBlock } from '../ColumnBlock';
@@ -28,8 +28,8 @@ export const Item: FC<Props> = ({ operation, onOpen }) => {
           </div>
           <div>
             <ColumnBlock
-              title={operation.title}
-              subtitle={format(operation.createdAt, 'dd MMMM', {
+              title={operation.name}
+              subtitle={format(new Date(operation.createdAt), 'dd MMMM', {
                 locale: ru,
               })}
             />
@@ -37,22 +37,22 @@ export const Item: FC<Props> = ({ operation, onOpen }) => {
         </div>
       </div>
       <div className={styles.item_col}>
-        <ColumnBlock title={operation.price.toString()} subtitle="Цена" />
+        <ColumnBlock title={operation.amount.toString()} subtitle="Цена" />
       </div>
       <div className={styles.item_col}>
-        <ColumnBlock title={operation.description} subtitle="Описание" />
+        <ColumnBlock title={operation?.desc} subtitle="Описание" />
       </div>
       <div className={styles.item_col}>
-        <ColumnBlock title={operation.category.title} subtitle="Тип операции" />
+        <ColumnBlock title={operation.category?.name} subtitle="Тип операции" />
       </div>
       <div className={styles.item_col}>
         <div
           className={cn(styles.item_type, {
-            [styles.item_type__expense]: operation.type === 'expense',
-            [styles.item_type__income]: operation.type === 'income',
+            [styles.item_type__cost]: operation.type === 'Cost',
+            [styles.item_type__profit]: operation.type === 'Profit',
           })}
         >
-          {operation.type === 'income' ? <IncomeIcon /> : <ExpenseIcon />}
+          {operation.type === 'Profit' ? <ProfitIcon /> : <CostIcon />}
         </div>
       </div>
     </div>

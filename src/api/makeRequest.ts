@@ -25,6 +25,7 @@ export default ({
 }: IAxiosConfig) => {
   const headerObj = {
     ...headers,
+    'Content-Type': 'application/json',
   } as AxiosRequestHeaders;
 
   if (localStorage.getItem('token')) {
