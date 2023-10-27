@@ -9,6 +9,7 @@ import styles from './ProfileForm.module.scss';
 import { useAppDispatch, useAppSelector } from '@src/store';
 import { useEffect } from 'react';
 import { fetchUpdateProfile } from '@src/slices/profile';
+import { useTranslation } from 'react-i18next';
 
 const schema = yup.object({
   name: yup
@@ -41,6 +42,7 @@ interface IProfileForm {
 
 export const ProfileForm: React.FC = () => {
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
   const profile = useAppSelector((state) => state.profile.profile);
 
   const { control, setValue, handleSubmit } = useForm<IProfileForm>({
@@ -138,14 +140,14 @@ export const ProfileForm: React.FC = () => {
       </div>
       <div className={styles.profileForm_groupBtn}>
         <Button className={styles.profileForm_submit} type="submit">
-          Изменить
+          {t`content.profile.btnGroup.change`}
         </Button>
         <Button
           className={styles.profileForm_mainTo}
           btnType="secondary"
           onClick={handleGoMainClick}
         >
-          На главную
+          {t`content.profile.btnGroup.toMain`}
         </Button>
       </div>
     </form>

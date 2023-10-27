@@ -15,6 +15,25 @@
     display: flex;
     gap: 8px;
   }
+
+  &_submit {
+    min-width: 124px;
+  }
+
+  &_cancel {
+    min-width: 124px;
+  }
+
+  &_delete {
+    & svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    & path {
+      fill: rgb(59 130 246);
+    }
+  }
 }
 
 .checkboxGroup {
@@ -39,13 +58,13 @@
 }
 
 .icon {
-  &__income {
+  &__profit {
     & path {
       fill: rgb(34 197 94);
     }
   }
 
-  &__expense {
+  &__cost {
     & path {
       fill: rgb(239 68 68);
     }

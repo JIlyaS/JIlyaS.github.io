@@ -1,4 +1,5 @@
-import { useContext, useMemo, useState } from 'react';
+/* eslint-disable prettier/prettier */
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button, List, Modal } from '../../components';
@@ -9,13 +10,23 @@ import { Operation } from '../../entities/operation';
 
 import styles from './styles.module.scss';
 import { AuthContext } from '@src/providers/auth/AuthContext';
+import { useAppDispatch, useAppSelector } from '@src/store';
+import { fetchOperations } from '@src/slices/operation';
 
 export const MainPage: React.FC = () => {
+  const dispatch = useAppDispatch();
   const [operationId, setOperationId] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useTranslation();
-  const [operations, setOperations] = useState<Operation[]>(getOperationDataList(20));
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [operationList, setOperations] = useState<Operation[]>(getOperationDataList(20));
+
+  const operations = useAppSelector((state) => state.operation.operations);
   const isLoggedIn = useContext(AuthContext);
+
+  useEffect(() => {
+    dispatch(fetchOperations());
+  }, []);
 
   const handleOpenModal = (id: string) => {
     setOperationId(id);
@@ -38,7 +49,7 @@ export const MainPage: React.FC = () => {
         <div className={styles.mainPage_header}>
           {isLoggedIn && (
             <Button dimension="medium" onClick={() => setIsModalOpen(true)}>
-              Создать
+              {t`content.operation.btnGroup.create`}
             </Button>
           )}
         </div>

@@ -44,7 +44,7 @@ export const Header: FC = () => {
             cn(styles.header_link, { [styles.header_link__active]: isActive })
           }
         >
-          Главная страница
+          {t`header.route.main`}
         </NavLink>
         {isLoggedIn && (
           <NavLink
@@ -53,12 +53,12 @@ export const Header: FC = () => {
               cn(styles.header_link, { [styles.header_link__active]: isActive })
             }
           >
-            Профиль
+            {t`header.route.profile`}
           </NavLink>
         )}
         {isLoggedIn ? (
           <Button dimension="small" btnType="secondary" onClick={handleLogoutClick}>
-            Выйти
+            {t`header.btnGroup.logout`}
           </Button>
         ) : (
           <NavLink
@@ -67,7 +67,7 @@ export const Header: FC = () => {
               cn(styles.header_link, { [styles.header_link__active]: isActive })
             }
           >
-            Войти
+            {t`header.btnGroup.login`}
           </NavLink>
         )}
       </div>

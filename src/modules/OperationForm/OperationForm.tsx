@@ -1,45 +1,46 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prettier/prettier */
+import { useContext, useEffect, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import cn from 'classnames';
 import Select from 'react-select';
 
+import { AuthContext } from '@src/providers/auth/AuthContext';
+import { useAppDispatch, useAppSelector } from '@src/store';
+import { fetchCategories } from '@src/slices/category';
+import {
+  fetchAddOperation,
+  fetchDeleteOperation,
+  fetchUpdateOperation,
+} from '@src/slices/operation';
+
 import { Button, Checkbox, InputField } from '../../components';
-import IncomeIcon from '../../shared/assets/icons/income-icon.svg';
-import ExpenseIcon from '../../shared/assets/icons/expense-icon.svg';
+import ProfitIcon from '../../shared/assets/icons/profit-icon.svg';
+import CostIcon from '../../shared/assets/icons/cost-icon.svg';
+import DeleteIcon from '../../shared/assets/icons/delete-icon.svg';
 
 import styles from './OperationForm.module.scss';
-import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '@src/providers/auth/AuthContext';
 
 const schema = yup.object({
   type: yup.string().required("Поле 'Тип' является обязательным полем"),
-  title: yup
+  name: yup
     .string()
     .max(100, "Поле 'Заголовок' должно содержать не более 100 символов")
     .required("Поле 'Заголовок' является обязательным полем"),
-  description: yup.string().max(256, "Поле 'Описание' должно содержать не более 256 символов"),
-  price: yup.string().required("Поле 'Цена' является обязательным полем"),
-  operationType: yup.mixed().nullable().required("Поле 'Тип операции' является обязательным полем"),
-  //  yup
-  //   .object()
-  //   .shape({
-  //     value: yup.string(),
-  //     label: yup.string(),
-  //   })
-  //   .required("Поле 'Тип операции' является обязательным полем"),
+  desc: yup.string().max(256, "Поле 'Описание' должно содержать не более 256 символов"),
+  amount: yup.string().required("Поле 'Цена' является обязательным полем"),
+  categoryId: yup.string().required("Поле 'Тип операции' является обязательным полем"),
 });
 
 interface IOperationForm {
   id?: string;
-  type?: string; // 'income' | 'expense'
-  title?: string;
-  description?: string;
-  price?: string;
-  operationType?: any;
-  // operationType?: { value: string; label: string };
+  type?: string;
+  name?: string;
+  desc?: string;
+  amount?: string;
+  categoryId?: string;
 }
 
 interface Props {
@@ -48,50 +49,50 @@ interface Props {
   onClose: () => void;
 }
 
-const options: any = [
-  { value: 'food', label: 'Еда' },
-  { value: 'salary', label: 'Зарплата' },
-  { value: 'product', label: 'Продукты' },
-  { value: 'shop', label: 'Одежда' },
-  { value: 'other', label: 'Прочее' },
-];
-
 export const OperationForm: React.FC<Props> = ({ operation, isOpen, onClose }) => {
   const [defaultValues, setDefaultValue] = useState({
     id: "",
     type: "",
-    title: "",
-    description: "",
-    price: "",
-    operationType: "",
+    name: "",
+    desc: "",
+    amount: "",
+    categoryId: "",
   });
 
   const isLoggedIn = useContext(AuthContext);
+  const dispatch = useAppDispatch();
+  const editOperation = !!operation;
 
-  const { control, setValue, clearErrors, reset, handleSubmit } = useForm<IOperationForm>({
+  const { control, setValue, clearErrors, handleSubmit } = useForm<IOperationForm>({
     resolver: yupResolver(schema),
     mode: 'onSubmit',
     defaultValues,
   });
+
+  const categories = useAppSelector((state) => state.category.categories);
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, []);
 
   useEffect(() => {
     if (operation) {
       setDefaultValue({
         id: operation.id,
         type: operation.type,
-        title: operation.title,
-        description: operation.description,
-        price: operation.price,
-        operationType: operation.category.type,
+        name: operation.name,
+        desc: operation.desc,
+        amount: operation.amount,
+        categoryId: operation.category.id,
       });
     } else {
       setDefaultValue({
         id: null,
         type: "",
-        title: "",
-        description: "",
-        price: "",
-        operationType: "",
+        name: "",
+        desc: "",
+        amount: "",
+        categoryId: "",
       });
     }
   }, [operation]);
@@ -100,35 +101,45 @@ export const OperationForm: React.FC<Props> = ({ operation, isOpen, onClose }) =
     if (!isOpen) {
       setValue("id", null);
       setValue("type", "");
-      setValue("title", "");
-      setValue("description", "");
-      setValue("price", "");
-      setValue("operationType", "");
+      setValue("name", "");
+      setValue("desc", "");
+      setValue("amount", "");
+      setValue("categoryId", "");
 
       clearErrors();
     } else {
       setValue("id", defaultValues.id);
       setValue("type", defaultValues.type);
-      setValue("title", defaultValues.title);
-      setValue("description", defaultValues.description);
-      setValue("price", defaultValues.price);
-      setValue("operationType", defaultValues.operationType);
+      setValue("name", defaultValues.name);
+      setValue("desc", defaultValues.desc);
+      setValue("amount", defaultValues.amount);
+      setValue("categoryId", defaultValues.categoryId);
     }
   }, [defaultValues, operation, isOpen]);
 
+  const handleDeleteOperationClick = (id: string | null) => {
+    dispatch(fetchDeleteOperation(id));
+    onClose();
+  }
 
-  const onSubmit: SubmitHandler<IOperationForm> = () => {
-    reset({
-      type: '',
-      title: '',
-      description: '',
-      price: '',
-      operationType: '',
-    });
+
+  const handleOperationSubmit: SubmitHandler<IOperationForm> = (data) => {
+    const updatedData = {
+      type: data.type,
+      name: data.name,
+      desc: data.desc,
+      amount: data.amount,
+      categoryId: data.categoryId,
+      date: new Date().toISOString()
+    }
+    editOperation ?
+      dispatch(fetchUpdateOperation({ ...updatedData, id: data.id })) :
+      dispatch(fetchAddOperation(updatedData));
+    onClose();
   };
 
   return (
-    <form className={styles.operationForm} onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.operationForm} onSubmit={handleSubmit(handleOperationSubmit)}>
       <div>
         <Controller
           name="type"
@@ -142,26 +153,26 @@ export const OperationForm: React.FC<Props> = ({ operation, isOpen, onClose }) =
                 </div>
                 <label {...field} className={styles.checkboxGroup_wrap}>
                   <Checkbox
-                    id="income"
+                    id="profit"
                     name="type"
-                    value="income"
+                    value="Profit"
                     isIcon
-                    checked={field.value === "income"}
+                    checked={field.value === "Profit"}
                     label={
-                      <div className={cn(styles.icon, styles.icon__income)}>
-                        <IncomeIcon />
+                      <div className={cn(styles.icon, styles.icon__profit)}>
+                        <ProfitIcon />
                       </div>
                     }
                   />
                   <Checkbox
-                    id="expense"
+                    id="cost"
                     name="type"
-                    value="expense"
-                    checked={field.value === "expense"}
+                    value="Cost"
+                    checked={field.value === "Cost"}
                     isIcon
                     label={
-                      <div className={cn(styles.icon, styles.icon__expense)}>
-                        <ExpenseIcon />
+                      <div className={cn(styles.icon, styles.icon__cost)}>
+                        <CostIcon />
                       </div>
                     }
                   />
@@ -173,26 +184,26 @@ export const OperationForm: React.FC<Props> = ({ operation, isOpen, onClose }) =
         />
         <div className={styles.operationForm_group}>
           <Controller
-            name="title"
+            name="name"
             control={control}
             render={({ field, fieldState: { error } }) => (
               <InputField
-                id="title"
-                label="Заголовок"
+                id="name"
+                label="Название"
                 dimension="small"
                 extraError={error?.message}
-                placeholder="Введите заголовок"
+                placeholder="Введите название операции"
                 required
                 {...field}
               />
             )}
           />
           <Controller
-            name="price"
+            name="amount"
             control={control}
             render={({ field, fieldState: { error } }) => (
               <InputField
-                id="price"
+                id="amount"
                 label="Цена"
                 dimension="small"
                 extraError={error?.message}
@@ -204,11 +215,11 @@ export const OperationForm: React.FC<Props> = ({ operation, isOpen, onClose }) =
           />
         </div>
         <Controller
-          name="description"
+          name="desc"
           control={control}
           render={({ field, fieldState: { error } }) => (
             <InputField
-              id="description"
+              id="desc"
               label="Описание"
               dimension="small"
               placeholder="Введите описание"
@@ -219,10 +230,13 @@ export const OperationForm: React.FC<Props> = ({ operation, isOpen, onClose }) =
         />
 
         <Controller
-          name="operationType"
+          name="categoryId"
           control={control}
           render={({ field, fieldState: { error } }) => {
-            const currentOption = options.find((item: any) => item.value === field.value);
+            const categoryList = categories.map((category) => (
+              { value: category.id, label: category.name }
+            ))
+            const currentOption = categoryList.find((item) => item.value === field.value);
             return (
               <div className={styles.select}>
                 <label className={styles.select_label}>
@@ -232,9 +246,10 @@ export const OperationForm: React.FC<Props> = ({ operation, isOpen, onClose }) =
                   </span>
                   <Select
                     {...field}
-                    options={options}
+                    options={categoryList}
                     placeholder="Выберите тип операции"
                     value={currentOption}
+                    onChange={(data) => field.onChange(data.value)}
                     styles={{
                       control: (baseStyles) => ({
                         ...baseStyles,
@@ -260,10 +275,29 @@ export const OperationForm: React.FC<Props> = ({ operation, isOpen, onClose }) =
         />
       </div>
       <div className={styles.operationForm_btnGroup}>
-        <Button className={styles.operationForm_cancel} type="button" onClick={onClose}>
+        {editOperation ? <Button
+          className={styles.operationForm_delete}
+          dimension='small'
+          type="button"
+          btnType="secondary"
+          onClick={() => handleDeleteOperationClick(operation?.id)}
+        >
+          <DeleteIcon />
+        </Button> : null}
+        <Button
+          className={styles.operationForm_cancel}
+          dimension='small'
+          type="button"
+          onClick={onClose}
+        >
           Отмена
         </Button>
-        <Button className={styles.operationForm_submit} disabled={!isLoggedIn} type="submit">
+        <Button
+          className={styles.operationForm_submit}
+          dimension='small'
+          disabled={!isLoggedIn}
+          type="submit"
+        >
           Сохранить
         </Button>
       </div>

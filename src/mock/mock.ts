@@ -2,18 +2,21 @@ import { Operation } from '../entities/operation';
 import { v4 as uuidv4 } from 'uuid';
 
 export const createRandomOperation = (createdAt: Date, typeValue: number): Operation => {
-  const operations: ['expense', 'income'] = ['expense', 'income'];
+  const operations: ['Cost', 'Profit'] = ['Cost', 'Profit'];
 
   return {
     id: uuidv4(),
-    title: 'Пятёрочка',
-    description: 'Оплата товаров',
+    name: 'Пятёрочка',
+    desc: 'Оплата товаров',
     createdAt: createdAt,
-    price: 500,
+    updatedAt: createdAt,
+    amount: 500,
     category: {
       id: uuidv4(),
-      title: 'Продукты',
-      type: 'product',
+      name: 'Продукты',
+      photo: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     type: operations[typeValue],
   };

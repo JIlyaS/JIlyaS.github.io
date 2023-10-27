@@ -10,7 +10,7 @@ import styles from './List.module.scss';
 interface Props {
   title: string;
   items: Operation[];
-  onLoadMore: () => void;
+  onLoadMore?: () => void;
   onOpenEditModal: (id: string) => void;
 }
 
@@ -24,9 +24,13 @@ export const List: FC<Props> = ({ items, title, onLoadMore, onOpenEditModal }) =
         <div></div>
       </div>
       <div className={styles.list_items}>
-        {items.map((item) => (
-          <Item key={item.id} operation={item} onOpen={() => onOpenEditModal(item.id)} />
-        ))}
+        {items.length ? (
+          items.map((item) => (
+            <Item key={item.id} operation={item} onOpen={() => onOpenEditModal(item.id)} />
+          ))
+        ) : (
+          <div className={styles.list_empty}>Список пуст</div>
+        )}
         <div className={styles.list_loadMore} ref={targetRef}></div>
       </div>
       <div className={styles.list_footer}></div>
